@@ -17,6 +17,22 @@ h1 {
 
 ul {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 5px 0 5px 0;
+    padding: 5px;
+}
+
+li:hover {
+    background-color: rgb(234, 239, 255);
+}
+
+a {
+    text-decoration: none;
+    color: #3c4043;
 }
 
 #banner {
@@ -91,6 +107,17 @@ section {
     border-radius: 25px;
     margin: 20px;
     padding: 20px;
+    padding-top: 10px;
+}
+
+section h2 {
+    margin-bottom: 10px;
+}
+
+section li {
+    padding-left: 40px;
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
 footer {
@@ -118,7 +145,12 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 250px;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+}
+
+#footerList li {
     margin: 0;
     padding: 0;
 }
