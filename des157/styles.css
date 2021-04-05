@@ -15,6 +15,10 @@ h1 {
     margin-bottom: 0;
 }
 
+ul {
+    list-style-type: none;
+}
+
 #banner {
     width: 1100px;
     height: 250px;
@@ -91,6 +95,10 @@ footer {
     min-width: 900px
 }
 
+p {
+    margin: 0px;
+}
+
 #footerList {
     display: flex;
     justify-content: space-between;
@@ -98,10 +106,4 @@ footer {
     width: 250px;
     margin: 0;
     padding: 0;
-}
-
-ul {
-    list-style-type: none;
-    /* padding: 0; */
-    /* margin: 0; */
 }
