@@ -42,6 +42,7 @@ a {
     height: 250px;
     display: flex;
     padding: 20px 0 20px 0;
+    cursor: pointer;
 }
 
 .colorSquare {
