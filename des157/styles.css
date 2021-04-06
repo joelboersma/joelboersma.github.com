@@ -95,7 +95,7 @@ a {
     background-color: #7986cb;
     color: white;
     border-radius: 50px;
-    animation: bgColorChange 100s cubic-bezier(0.95, 0.05, 0.05, 0.95) infinite;
+    animation: bgColorChange 50s ease-in-out infinite;
 }
 
 main {
@@ -169,37 +169,15 @@ p {
 
 /* Default Google Calendar Colors */
 @keyframes bgColorChange {
-    0% {
-        background-color:#7986cb;
-    }
-    10% {
-        background-color:#8e24aa;
-    }
-    20% {
-        background-color:#d60000;
-    }
-    30% {
-        background-color:#e67c73;
-    }
-    40% {
-        background-color:#f5511d;
-    }
-    50% {
-        background-color:#f6c026;
-    }
-    60% {
-        background-color:#33b679;
-    }
-    70% {
-        background-color:#0b8043;
-    }
-    80% {
-        background-color:#3f51b5;
-    }
-    90% {
-        background-color:#039be5;
-    }
-    100% {
-        background-color:#7986cb;
-    }
+    0%,  8%   { background-color:#7986cb; }
+    10%, 18%  { background-color:#8e24aa; }
+    20%, 28%  { background-color:#d60000; }
+    30%, 38%  { background-color:#e67c73; }
+    40%, 48%  { background-color:#f5511d; }
+    50%, 58%  { background-color:#f6c026; }
+    60%, 68%  { background-color:#33b679; }
+    70%, 78%  { background-color:#0b8043; }
+    80%, 88%  { background-color:#3f51b5; }
+    90%, 98%  { background-color:#039be5; }
+    100%      { background-color:#7986cb; }
 }
