@@ -1,3 +1,5 @@
+/*** Standard Elements ***/
+
 body {
     font-family: Roboto, Arial, sans-serif;
     display: flex;
@@ -10,6 +12,14 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+main {
+    max-width: 1100px;
+    min-width: 900px;
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
 }
 
 h1 {
@@ -37,13 +47,39 @@ a {
     color: #3c4043;
 }
 
-#banner {
-    width: 1100px;
-    height: 250px;
-    display: flex;
-    padding: 20px 0 20px 0;
-    cursor: pointer;
+p {
+    margin: 0px;
 }
+
+section {
+    width: 33%;
+    border: 1px solid #dadce0;
+    border-radius: 25px;
+    margin: 20px;
+    padding: 20px;
+    padding-top: 10px;
+}
+
+section h2 {
+    margin-bottom: 10px;
+}
+
+section li {
+    padding-left: 40px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+footer {
+    background-color: #dadce0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 900px;
+}
+
+
+/*** Classes ***/
 
 .colorSquare {
     height: 100%;
@@ -79,6 +115,17 @@ a {
     background-color: #34a853;
 }
 
+
+/*** IDs ***/
+
+#banner {
+    width: 1100px;
+    height: 250px;
+    display: flex;
+    padding: 20px 0 20px 0;
+    cursor: pointer;
+}
+
 #colorFirst {
     border-radius: 50px 0 0 50px;
 }
@@ -98,41 +145,6 @@ a {
     animation: bgColorChange 50s ease-in-out infinite;
 }
 
-main {
-    max-width: 1100px;
-    min-width: 900px;
-    display: flex;
-    width: 100%;
-    flex-grow: 1;
-}
-
-section {
-    width: 33%;
-    border: 1px solid #dadce0;
-    border-radius: 25px;
-    margin: 20px;
-    padding: 20px;
-    padding-top: 10px;
-}
-
-section h2 {
-    margin-bottom: 10px;
-}
-
-section li {
-    padding-left: 40px;
-    margin-left: -20px;
-    margin-right: -20px;
-}
-
-footer {
-    background-color: #dadce0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: 900px;
-}
-
 #footerContent {
     display: flex;
     justify-content: space-between;
@@ -141,10 +153,6 @@ footer {
     width: 100%;
     max-width: 1200px;
     min-width: 900px
-}
-
-p {
-    margin: 0px;
 }
 
 #footerList {
@@ -166,6 +174,8 @@ p {
     background-color: rgba(0, 0, 0, .1);
 }
 
+
+/*** Animation ***/
 
 /* Default Google Calendar Colors */
 @keyframes bgColorChange {
