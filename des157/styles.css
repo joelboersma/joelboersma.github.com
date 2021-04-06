@@ -25,10 +25,11 @@ ul {
 li {
     margin: 5px 0 5px 0;
     padding: 5px;
+    transition: background-color 0.5s;
 }
 
 li:hover {
-    background-color: rgb(234, 239, 255);
+    background-color: rgb(235, 235, 235);
 }
 
 a {
@@ -133,6 +134,7 @@ footer {
 #footerContent {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
     width: 100%;
     max-width: 1200px;
@@ -154,5 +156,10 @@ p {
 
 #footerList li {
     margin: 0;
-    padding: 0;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+#footerList li:hover {
+    background-color: rgba(0, 0, 0, .1);
 }
