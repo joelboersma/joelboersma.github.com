@@ -6,6 +6,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    min-width: 900px;
 }
 
 header {
@@ -45,10 +46,6 @@ li:hover {
 a {
     text-decoration: none;
     color: #3c4043;
-}
-
-p {
-    margin: 0px;
 }
 
 section {
@@ -154,7 +151,12 @@ footer {
     padding: 20px;
     width: 100%;
     max-width: 1200px;
-    min-width: 900px
+    min-width: 900px;
+}
+
+#googleTag {
+    margin: 0px;
+    padding: 8px;
 }
 
 #footerList {
