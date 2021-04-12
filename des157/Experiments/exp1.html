@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Exp. 1: Fibonacci</title>
+</head>
+<body>
+    <h1>First N Fibonacci Numbers</h1>
+    <h2>Check the console</h2>
+    <script>
+
+        /* 
+            This program prompts the user to enter a positive integer n and 
+            will print the first n fibonacci numbers to the console. 
+            The program will also check if the input is valid and, if it isn't, 
+            will print the issue to the console.
+        */
+
+        var n = prompt("How many fibonacci numbers would you like? \nPlease enter a positive integer:");
+        if (n == null || n == "") {
+            console.log("You didn't enter anything!");
+        }
+        else if (n % 1 != 0) {
+            console.log("You did not enter an integer!");
+        }
+        else if (n < 0) {
+            console.log("You entered a negative integer!");
+        }
+        else if (n === 0) {
+            console.log("You entered 0!");
+        }
+        else {
+            // print first n fibonacci numbers
+            var num1 = 0;  // f0 = 0
+            var num2 = 1;  // f1 = 1
+            for (var i = 0; i < n; i++) {
+                if (i < 2) {
+                    console.log(i);
+                }
+                else {
+                    var newNum = num1 + num2;
+                    console.log(newNum);
+                    num1 = num2;
+                    num2 = newNum;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
