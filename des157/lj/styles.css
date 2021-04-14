@@ -64,12 +64,12 @@ footer {
    justify-content: center;
 }
 
-/* nav {
+nav {
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100vw;
-} */
+}
 
 ul {
    display: flex;
