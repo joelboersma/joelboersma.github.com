@@ -60,7 +60,7 @@ article p {
 
 footer {
    background-color: white;
-   padding: 20px 0 20px 0;
+   padding: 10px 0 10px 0;
    width: 100vw;
    display: flex;
    justify-content: center;
@@ -83,8 +83,19 @@ ul {
    width: 400px;
 }
 
-li {
-   list-style-type: none;
-   display: flex;
-   justify-content: center;
+nav li {
+   padding: 10px;
 }
+
+nav li a {
+   padding: 10px;
+   border-radius: 10px;
+   color: #2F497A;
+   text-decoration: none;
+   transition: background-color 0.5s;
+}
+
+nav li a:hover {
+   background-color: rgb(235, 235, 235);
+}
+
