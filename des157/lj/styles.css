@@ -32,7 +32,7 @@ main {
 article {
    background-color: white;
    width: 94vw;
-   max-width: 500px;
+   max-width: 550px;
    border-radius: 20px;
    margin: 20px;
    /* box-shadow: 0px 0px 10px 0px #000000; */
@@ -47,15 +47,33 @@ article {
 
 h2 {
    margin: 10px;
+   font-size: 32px;
 }
 
 h3 {
    margin: 10px;
+   font-size: 16px;
 }
 
 article p {
    margin: 20px;
    font-size: 18px;
+   line-height: 1.5;
+   font-size: 20px;
+}
+
+a {
+   text-decoration: none;
+}
+
+article ul {
+   margin: 20px;
+   padding-left: 30px;
+}
+
+article ul li {
+   font-size: 20px;
+   line-height: 1.5;
 }
 
 footer {
@@ -74,7 +92,7 @@ nav {
    width: 100vw;
 }
 
-ul {
+nav ul {
    display: flex;
    list-style-type: none;
    padding: 0;
@@ -91,7 +109,6 @@ nav li a {
    padding: 10px;
    border-radius: 10px;
    color: #2F497A;
-   text-decoration: none;
    transition: background-color 0.5s;
 }
 
