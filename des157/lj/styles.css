@@ -8,17 +8,27 @@
    min-height: 100vh;
    display: flex;
    flex-direction: column;
-   /* justify-content: space-between; */
 }
 
 header {
-   width: 100vw;
-   display: flex;
-   justify-content: center;
+   background-color: #002975;
+   color: white;
+   padding: 10px 10px 10px 10px;
+   border-radius: 20px 20px 0 0;
+}
+
+header#TitleHeader {
+   width: 100%;
+   text-align: center;
    background-color: white;
    position: fixed;
    top: 0;
    box-shadow: 0px 0px 10px 0px #000000;
+
+   /* overwrite <header> styles */
+   border-radius: 0;
+   color: black;
+   padding: 0;
 }
 
 main {
@@ -36,13 +46,6 @@ article {
    border-radius: 20px;
    margin: 20px;
    /* box-shadow: 0px 0px 10px 0px #000000; */
-}
-
-.articleHead {
-   background-color: #002975;
-   color: white;
-   padding: 10px 10px 10px 10px;
-   border-radius: 20px 20px 0 0;
 }
 
 h2 {
@@ -79,7 +82,7 @@ article ul li {
 footer {
    background-color: white;
    padding: 10px 0 10px 0;
-   width: 100vw;
+   width: 100%;
    display: flex;
    justify-content: center;
    box-shadow: 0px 0px 10px 0px #000000;
