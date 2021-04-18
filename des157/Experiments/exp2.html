@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../styles.css">
+   <title>Exp. 2: Fibonacci+</title>
+   <style>
+      h2 {
+         color: red;
+      }
+   </style>
+</head>
+<body>
+   <h1>First N Fibonacci Numbers</h1>
+   <h2></h2>
+   <p></p>
+   <main></main>
+
+   <script>
+
+      /* 
+         This program prompts the user to enter a positive integer n and 
+         will print the first n fibonacci numbers to the console. 
+         The program will also check if the input is valid and, if it isn't, 
+         will print the issue to the console.
+      */
+
+      // @n: any
+      // Returns true if @n is a positive integer.
+      // Otherwise, shows error in h2 and returns false.
+      function isPositiveInt(n) {
+         var errorString = "";
+
+         if (n == null || n == "") {
+            errorString = "You didn't enter anything!";
+         }
+         else if (n % 1 != 0) {
+            errorString = "You did not enter an integer!";
+         }
+         else if (n < 0) {
+            errorString = "You entered a negative integer!";
+         }
+         else if (n == 0) {
+            errorString = "You entered 0!";
+         }
+         else {
+            return true;
+         }
+
+         var errorHeading = document.querySelector("h2");
+         errorHeading.innerText = "Error: " + errorString;
+         return false;
+      }
+
+      // @n: positive integer
+      // Returns an array of the first n fibonacci numbers.
+      function getFibNums(n) {
+         var fibNums = [];
+         var num1 = 0;  // f0 = 0
+         var num2 = 1;  // f1 = 1
+         for (var i = 0; i < n; i++) {
+            if (i < 2) {
+               fibNums.push(i);
+            }
+            else {
+               var newNum = num1 + num2;
+               fibNums.push(newNum);
+               num1 = num2;
+               num2 = newNum;
+            }
+         }
+         return fibNums;
+      }
+
+      // @fibNums: [number]
+      // Shows each element of fibNums on the page
+      function showFibNums(fibNums) {
+         for (var num of fibNums) {
+
+         }
+      }
+
+      var n = prompt("How many fibonacci numbers would you like? \nPlease enter a positive integer:");
+      if (isPositiveInt(n)) {
+         var fibNums = getFibNums(n);
+         showFibNums(fibNums);
+      }
+
+   </script>
+
+</body>
+</html>
