@@ -57,8 +57,10 @@
             return true;
          }
 
+         // Display error
          var errorHeading = document.querySelector("h2");
          errorHeading.innerText = "Error: " + errorString;
+
          return false;
       }
 
@@ -82,17 +84,19 @@
          return fibNums;
       }
 
-      // @fibNums: [number]
+      // @fibNums: number[]
       // Shows each element of fibNums on the page
       function showFibNums(fibNums) {
          var ol = document.querySelector('ol');
          for (var num of fibNums) {
+            // Append <li> containing @num to <ol>
             var li = document.createElement('li');
             li.innerText = num;
             ol.appendChild(li);
          }
       }
 
+      // Main Sequence
       var n = prompt("How many fibonacci numbers would you like? \nPlease enter a positive integer:");
       if (isPositiveInt(n)) {
          var fibNums = calcFibNums(n);
