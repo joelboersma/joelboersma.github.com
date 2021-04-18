@@ -4,27 +4,35 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../styles.css">
    <title>Exp. 2: Fibonacci+</title>
    <style>
+      body {
+         font-family: Arial, Helvetica, sans-serif;
+      }
+      mark {
+         background-color: transparent;
+         color: blue;
+      }
       h2 {
          color: red;
+      }
+      li::marker {
+         color: gray;
       }
    </style>
 </head>
 <body>
-   <h1>First N Fibonacci Numbers</h1>
+   <h1>The First <mark>N</mark> Fibonacci Numbers</h1>
    <h2></h2>
-   <p></p>
-   <main></main>
+   <ol></ol>
 
    <script>
 
       /* 
-         This program prompts the user to enter a positive integer n and 
-         will print the first n fibonacci numbers to the console. 
+         This program prompts the user to enter a positive integer n and will
+         display the first n fibonacci numbers on the page in an ordered list.
          The program will also check if the input is valid and, if it isn't, 
-         will print the issue to the console.
+         will display the error in an <h2>.
       */
 
       // @n: any
@@ -56,7 +64,7 @@
 
       // @n: positive integer
       // Returns an array of the first n fibonacci numbers.
-      function getFibNums(n) {
+      function calcFibNums(n) {
          var fibNums = [];
          var num1 = 0;  // f0 = 0
          var num2 = 1;  // f1 = 1
@@ -77,14 +85,18 @@
       // @fibNums: [number]
       // Shows each element of fibNums on the page
       function showFibNums(fibNums) {
+         var ol = document.querySelector('ol');
          for (var num of fibNums) {
-
+            var li = document.createElement('li');
+            li.innerText = num;
+            ol.appendChild(li);
          }
       }
 
       var n = prompt("How many fibonacci numbers would you like? \nPlease enter a positive integer:");
       if (isPositiveInt(n)) {
-         var fibNums = getFibNums(n);
+         var fibNums = calcFibNums(n);
+         document.querySelector('mark').innerText = n;
          showFibNums(fibNums);
       }
 
