@@ -53,9 +53,12 @@ h2 {
    font-size: 32px;
 }
 
-h3 {
+time {
    margin: 10px;
    font-size: 16px;
+   font-weight: bold;
+   width: 100%;
+   display: block;
 }
 
 article p {
