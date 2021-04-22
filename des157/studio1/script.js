@@ -3,7 +3,7 @@
 
    const myForm = document.querySelector('#MyForm');
    const madLib = document.querySelector('#MadLib');
-   const formData = document.querySelectorAll('input[type=text]');
+   const formData = document.querySelectorAll('.madLibInput');
 
    myForm.addEventListener('submit', function(event) {
       event.preventDefault();
@@ -36,7 +36,7 @@
    }
 
    function makeMadLib(words) {
-      madLib.innerHTML = `The ${words[0]} and the ${words[1]} are ${words[2]} and like to ${words[3]}.`;
+      madLib.innerHTML = `The ${words[0]} and the ${words[1]} are ${words[2]} and like to ${words[3]} ${words[4]} times.`;
    }
 
 }());
