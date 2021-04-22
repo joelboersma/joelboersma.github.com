@@ -3,7 +3,7 @@
 
    const myForm = document.querySelector('#MyForm');
    const madLib = document.querySelector('#MadLib');
-   const formData = document.querySelectorAll('.madLibInput');
+   const formData = document.querySelectorAll('#FormInputs input');
 
    myForm.addEventListener('submit', function(event) {
       event.preventDefault();
@@ -26,7 +26,7 @@
       }
 
       if (emptyFields > 0) {
-         madLib.innerHTML = `Please fill out every field.`
+         madLib.innerHTML = 'Please fill out every field.'
       }
       else {
          makeMadLib(words);
@@ -36,7 +36,11 @@
    }
 
    function makeMadLib(words) {
-      madLib.innerHTML = `The ${words[0]} and the ${words[1]} are ${words[2]} and like to ${words[3]} ${words[4]} times.`;
+      let result = 'This is an example for the thing:'
+      for(const word of words) {
+         result += ` ${word}`;
+      }
+      madLib.innerHTML = result
    }
 
 }());
