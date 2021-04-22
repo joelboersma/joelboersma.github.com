@@ -18,7 +18,6 @@
          <div class="crater" id="Crater3"></div>
          <div class="crater" id="Crater4"></div>
       </div>
-      <div class="star" style='width: 3px; height: 3px; right: 0; bottom: 0;'></div>
    </div>
    <div id="content">
       <header>
@@ -27,30 +26,39 @@
       </header>
       <main>
          <form id="MyForm">
-            <section>
-               <label for="word1">Noun</label>
-               <input type="text" id="word1">
-      
-               <label for="word2">Adjective</label>
-               <input type="text" id="word2">
-      
-               <label for="word3">Verb</label>
-               <input type="text" id="word3">
-      
-               <label for="word4">Adverb</label>
-               <input type="text" id="word4">
-      
-               <label for="word5">Number</label>
-               <input type="number" id="word5">
+            <section id="containerSection">
+
+               <section id="formSection">
+                  <label for="word1">Noun</label>
+                  <input type="text" id="word1" autofocus>
+         
+                  <label for="word2">Adjective</label>
+                  <input type="text" id="word2">
+         
+                  <label for="word3">Verb</label>
+                  <input type="text" id="word3">
+         
+                  <label for="word4">Adverb</label>
+                  <input type="text" id="word4">
+         
+                  <label for="word5">Number</label>
+                  <input type="number" id="word5">
+
+                  <p id="formError" hidden>No error right now</p>
+               </section>
+
+               <article id="MadLib" hidden>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio sed nulla saepe, debitis nihil voluptates animi quaerat minima doloribus amet tenetur voluptas distinctio facilis facere officia? Ea ipsum perferendis quasi?
+               </article>
+               
             </section>
             
             <div class="bottomButtonContainer">
                <input type="submit" value="Blast Off">
             </div>
             
-   
          </form>
-         <article id="MadLib"></article>
+         
       </main>
       <footer>
          <!-- DON'T FORGET ABOUT THE FOOTER -->

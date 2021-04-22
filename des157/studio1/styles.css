@@ -94,7 +94,7 @@ h2 {
    font-size: 24px;
 }
 
-section {
+#containerSection {
    background-color: #591558;
    border: 1px solid black;
    box-sizing: border-box;
@@ -123,10 +123,10 @@ input:focus {
    outline: none;
 }
 
-section input {
+#formSection input {
    font-size: 18px;
    color: black;
-   /* background-color: gray; */
+   background-color: #bbbbbb;
 
    border: none;
    border-radius: 50px;
@@ -138,8 +138,14 @@ section input {
    height: 35px;
 }
 
-section input:focus {
+#formSection input:focus {
    background-color: white;
+}
+
+#formError {
+   color: red;
+   margin: 16px 0 0 0;
+   font-size: 18px;
 }
 
 .bottomButtonContainer {
@@ -162,5 +168,19 @@ input[type="submit"] {
 }
 
 input[type="submit"]:focus {
-   /* do this later */
+   background-color: #5742b4;
+}
+
+input[type="submit"]:hover {
+   background-color: #5742b4;
+   cursor: pointer;
+}
+
+input[type="submit"]:active {
+   background-color: #5742b4;
+   transform: translateY(2px);
+}
+
+input[type="submit"].restartButton {
+   width: 400px;
 }
