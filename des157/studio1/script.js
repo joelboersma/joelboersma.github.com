@@ -56,7 +56,7 @@
       for (let i = 0; i < n; i++) {
          const bottom = Math.random() * 100;
          const right = Math.random() * 100;
-         const size = Math.random() * 3 + 1;
+         const size = Math.floor(Math.random() * 3 + 1);
 
          let star = document.createElement('div');
          star.className = 'star';
