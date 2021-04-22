@@ -9,6 +9,62 @@ body {
    min-height: 100vh;
 }
 
+#SpaceBG {
+   position: relative;
+   width: 100vw;
+   height: 100vh;
+   
+}
+
+#Moon {
+   position: absolute;
+   width: 150px;
+   height: 150px;
+
+   background-color: #C4C4C4;
+   border-radius: 50%;
+
+   left: 15px;
+   top: 15px;
+
+   overflow: hidden;
+
+   z-index: 1;
+}
+
+.crater {
+   position: absolute;
+   width: 43px;
+   height: 43px;
+   border-radius: 50%;
+   background-color: #696969;
+}
+
+#Crater1 {
+   width: 70px;
+   height: 70px;
+   left: 20px;
+   top: 60px;
+}
+#Crater2 {
+   left: 116px;
+   top: 85px;
+}
+#Crater3 {
+   left: 11px;
+   top: 10px;
+}
+#Crater4 {
+   left: 102px;
+   top: 18px;
+}
+
+.star {
+   position: absolute;
+   background-color: white;
+   border-radius: 100%;
+}
+
 #content {
    background: linear-gradient(180deg, #A82A68 0%, #7F2F9B 100%);
    border-radius: 15px;
@@ -37,7 +93,7 @@ h2 {
    font-size: 24px;
 }
 
-#FormInputs {
+section {
    background-color: #591558;
    border: 1px solid black;
    box-sizing: border-box;
@@ -50,7 +106,7 @@ h2 {
 label {
    display: block;
    margin-top: 20px;
-   font-size: 18px;
+   font-size: 20px;
    padding-left: 5px;
 }
 
@@ -66,8 +122,8 @@ input:focus {
    outline: none;
 }
 
-#FormInputs input {
-   font-size: 16px;
+section input {
+   font-size: 18px;
    color: black;
    /* background-color: gray; */
 
@@ -76,11 +132,12 @@ input:focus {
    box-sizing: border-box;
 
    margin-top: 8px;
-   padding: 5px 15px 5px 15px;
+   padding: 0px 15px 0px 15px;
    width: 100%;
+   height: 35px;
 }
 
-#FormInputs input:focus {
+section input:focus {
    background-color: white;
 }
 
