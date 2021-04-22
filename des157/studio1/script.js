@@ -8,8 +8,9 @@
    const formError = document.querySelector('#formError');
    const formSection = document.querySelector('#formSection');
    const formButton = document.querySelector('input[type="submit"]');
+   const h2 = document.querySelector('h2');
+
    const formData = document.querySelectorAll('section input');
-   
 
    let madLibShowing = false;
 
@@ -64,6 +65,7 @@
       madLib.removeAttribute('hidden')
       formButton.setAttribute('value', 'Create Another Adventure');
       formButton.classList = 'restartButton';
+      h2.innerHTML = 'Your Adventure';
       madLib.innerHTML = result
       madLibShowing = true;
    }
@@ -73,6 +75,7 @@
       madLib.setAttribute('hidden', 'hidden');
       formButton.setAttribute('value', 'Blast Off');
       formButton.classList = '';
+      h2.innerHTML = 'Complete the word list below...';
       madLibShowing = false;
    }
 
