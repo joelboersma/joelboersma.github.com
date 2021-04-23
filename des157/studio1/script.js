@@ -19,7 +19,6 @@
       event.preventDefault();
       if (madLibShowing) {
          showForm();
-         // madLibShowing = false;
       }
       else {
          processFormData();
@@ -45,9 +44,6 @@
          formError.className = 'showing';
       }
       else {
-         for (const field of formData) {
-            field.value = '';
-         }
          formError.className = '';
          showMadLib(words);
       }
@@ -71,6 +67,10 @@
    }
 
    function showForm() {
+      for (const field of formData) {
+         field.value = '';
+      }
+
       formSection.removeAttribute('hidden');
       madLib.setAttribute('hidden', 'hidden');
       formButton.setAttribute('value', 'Blast Off');
