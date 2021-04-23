@@ -50,8 +50,6 @@
          formError.className = '';
          showMadLib(words);
       }
-      
-      words.length = 0;
    }
 
    function showMadLib(words) {
