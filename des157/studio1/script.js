@@ -50,7 +50,7 @@
    }
 
    function showMadLib(words) {
-      // Example code for showing results
+      // fill in words
       mlEmTags[0].innerHTML = words[0];
       mlEmTags[1].innerHTML = words[1];
       mlEmTags[2].innerHTML = words[0];
@@ -58,6 +58,7 @@
       mlEmTags[4].innerHTML = words[3];
       mlEmTags[5].innerHTML = words[4];
 
+      // Hide form; show mad lib
       formSection.setAttribute('hidden', 'hidden');
       madLib.removeAttribute('hidden')
       formButton.setAttribute('value', 'Create Another Adventure');
@@ -67,10 +68,12 @@
    }
 
    function showForm() {
+      // clear form input fields
       for (const field of formData) {
          field.value = '';
       }
 
+      // Hide mad lib; show form
       formSection.removeAttribute('hidden');
       madLib.setAttribute('hidden', 'hidden');
       formButton.setAttribute('value', 'Blast Off');
@@ -85,13 +88,15 @@
    const SpaceBG = document.querySelector('#SpaceBG');
 
    // n: int
-   // Place @n stars
+   // Place @n stars on #SpaceBG
    function placeStars(n) {
       for (let i = 0; i < n; i++) {
+         // randomly generate attributes for position and size
          const bottom = Math.random() * 100;
          const right = Math.random() * 100;
          const size = Math.floor(Math.random() * 3 + 1);
 
+         // create star
          let star = document.createElement('div');
          star.className = 'star';
          star.style.bottom = bottom + '%';
@@ -99,6 +104,7 @@
          star.style.width = size + 'px';
          star.style.height = size + 'px';
          
+         // add star to background
          SpaceBG.appendChild(star);
       }
    }
