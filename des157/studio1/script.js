@@ -5,7 +5,7 @@
 
    const myForm = document.querySelector('#MyForm');
    const madLib = document.querySelector('#MadLib');
-   const formError = document.querySelector('#formError');
+   // const formError = document.querySelector('#formError');
    const formSection = document.querySelector('#formSection');
    const formButton = document.querySelector('input[type="submit"]');
    const h2 = document.querySelector('h2');
@@ -40,11 +40,11 @@
 
       // if not every field is filled out
       if (words.length < formData.length) {
-         formError.innerHTML = 'Error: Please fill out every field.'
-         formError.className = 'showing';
+         // formError.innerHTML = 'Error: Please fill out every field.'
+         // formError.className = 'showing';
       }
       else {
-         formError.className = '';
+         // formError.className = '';
          showMadLib(words);
       }
    }

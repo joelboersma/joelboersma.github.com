@@ -148,8 +148,9 @@ input:focus {
    background-color: white;
 }
 
-#formError {
+/* #formError {
    color: red;
+   font-weight: bold;
    margin: 0;
    transition: all 0.3s;
    font-size: 18px;
@@ -160,7 +161,7 @@ input:focus {
 #formError.showing {
    line-height: 1.5;
    margin-top: 16px;
-}
+} */
 
 #MadLib {
    font-size: 20px;
