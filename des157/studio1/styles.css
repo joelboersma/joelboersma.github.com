@@ -27,7 +27,6 @@ body {
    overflow: hidden;
 
    z-index: 1;
-   transform: translate(-50%, -50%);
 
    animation: moonAnimation 50s linear infinite;
 }
@@ -214,33 +213,34 @@ input[type="submit"].restartButton {
 }
 
 @keyframes moonAnimation {
-   0%, 100% {
+   0% {
       top: 20%;
-      left: -75px;
+      left: -150px;
+      transform: rotate(0deg);
    }
    33.3333% {
-      top: 80%;
-      left: calc(100% + 75px);
+      top: 60%;
+      left: 100%;
       transform: rotate(60deg);
    }
-   33.33334% {
-      top: 60%;
-      left: -75px;
-      transform: rotate(90deg);
-   }
-   66.6666% {
-      top: 20%;
-      left: calc(100% + 75px);
+   33.3334% {
+      top: 80%;
+      left: -150px;
       transform: rotate(120deg);
    }
-   66.6667% {
-      top: -75px;
-      left: 70%;
-      transform: rotate(150deg);
-   }
-   99.9999% {
-      top: calc(100% + 75px);
-      left: 30%;
+   66.6666% {
+      top: 40%;
+      left: 100%;
       transform: rotate(180deg);
+   }
+   66.6667% {
+      top: -150px;
+      left: 80%;
+      transform: rotate(240deg);
+   }
+   100% {
+      top: 100%;
+      left: 10%;
+      transform: rotate(300deg);
    }
 }
