@@ -180,6 +180,7 @@ em {
    display: flex;
    justify-content: center;
    margin-top: 20px;
+   margin-bottom: 10px;
 }
 
 input[type="submit"] {
@@ -210,6 +211,44 @@ input[type="submit"]:active {
 
 input[type="submit"].restartButton {
    width: 400px;
+}
+
+footer {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 80%;
+   /* background-color: #591558;
+   border: 1px solid black;
+   box-sizing: border-box;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   border-radius: 15px; */
+}
+
+nav ul {
+   display: flex;
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   justify-content: space-evenly;
+   width: 400px;
+}
+
+nav li {
+   padding: 10px;
+}
+
+nav li a {
+   padding: 10px;
+   border-radius: 10px;
+   /* color: #2F497A; */
+   transition: background-color 0.5s;
 }
 
 @keyframes moonAnimation {
