@@ -11,6 +11,7 @@
    const h2 = document.querySelector('h2');
 
    const formData = document.querySelectorAll('section input');
+   const mlEmTags = document.querySelectorAll('article em');
 
    let madLibShowing = false;
 
@@ -54,17 +55,18 @@
 
    function showMadLib(words) {
       // Example code for showing results
-      let result = 'This is an example for the thing:'
-      for(const word of words) {
-         result += ` ${word}`;
-      }
+      mlEmTags[0].innerHTML = words[0];
+      mlEmTags[1].innerHTML = words[1];
+      mlEmTags[2].innerHTML = words[0];
+      mlEmTags[3].innerHTML = words[2];
+      mlEmTags[4].innerHTML = words[3];
+      mlEmTags[5].innerHTML = words[4];
 
       formSection.setAttribute('hidden', 'hidden');
       madLib.removeAttribute('hidden')
       formButton.setAttribute('value', 'Create Another Adventure');
       formButton.classList = 'restartButton';
       h2.innerHTML = 'Your Adventure';
-      madLib.innerHTML = result
       madLibShowing = true;
    }
 
