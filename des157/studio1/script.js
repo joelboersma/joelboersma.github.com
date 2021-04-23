@@ -41,13 +41,13 @@
       // if not every field is filled out
       if (words.length < formData.length) {
          formError.innerHTML = 'Error: Please fill out every field.'
-         formError.removeAttribute('hidden');
+         formError.className = 'showing';
       }
       else {
          for (const field of formData) {
             field.value = '';
          }
-         formError.setAttribute('hidden', 'hidden');
+         formError.className = '';
          showMadLib(words);
       }
       
