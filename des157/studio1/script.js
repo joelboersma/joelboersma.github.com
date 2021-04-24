@@ -59,8 +59,16 @@
       mlEmTags[5].innerHTML = words[4];
 
       // Hide form; show mad lib
-      formSection.setAttribute('hidden', 'hidden');
-      madLib.removeAttribute('hidden')
+
+      // formSection.setAttribute('hidden', 'hidden');
+      const formItems = formSection.children;
+      for (const item of formItems) {
+         item.className = 'collapsed';
+      }
+
+      // madLib.removeAttribute('hidden')
+      madLib.classList = '';
+
       formButton.setAttribute('value', 'Create Another Adventure');
       formButton.classList = 'restartButton';
       h2.innerHTML = 'Your Adventure';
@@ -74,8 +82,16 @@
       }
 
       // Hide mad lib; show form
-      formSection.removeAttribute('hidden');
-      madLib.setAttribute('hidden', 'hidden');
+
+      // formSection.removeAttribute('hidden');
+      const formItems = formSection.children;
+      for (const item of formItems) {
+         item.className = '';
+      }
+
+      // madLib.setAttribute('hidden', 'hidden');
+      madLib.classList = 'collapsed';
+
       formButton.setAttribute('value', 'Blast Off');
       formButton.classList = '';
       h2.innerHTML = 'Complete the word list below...';

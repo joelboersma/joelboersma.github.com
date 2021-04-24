@@ -115,6 +115,11 @@ label {
    margin-top: 20px;
    font-size: 20px;
    padding-left: 5px;
+   overflow: hidden;
+
+   transition-property: all;
+   transition-duration: 0.5s;
+   transition-timing-function: ease;
 }
 
 label[for="word1"] {
@@ -129,7 +134,7 @@ input:focus {
    outline: none;
 }
 
-#formSection input {
+section input {
    font-size: 18px;
    color: black;
    background-color: #bbbbbb;
@@ -142,9 +147,13 @@ input:focus {
    padding: 0px 15px 0px 15px;
    width: 100%;
    height: 35px;
+   
+   transition-property: all;
+   transition-duration: 0.5s;
+   transition-timing-function: ease;
 }
 
-#formSection input:focus {
+section input:focus {
    background-color: white;
 }
 
@@ -163,9 +172,14 @@ input:focus {
    margin-top: 16px;
 } */
 
-#MadLib {
+section article { /* Mad Lib */
    font-size: 20px;
    line-height: 1.5;
+   overflow: hidden;
+
+   transition-property: all;
+   transition-duration: 0.5s;
+   transition-timing-function: ease;
 }
 
 em {
@@ -241,6 +255,13 @@ nav li {
 nav li a {
    padding: 10px;
    border-radius: 10px;
+}
+
+.collapsed {
+   line-height: 0;
+   height: 0;
+   margin: 0;
+   padding: 0;
 }
 
 @keyframes moonAnimation {
