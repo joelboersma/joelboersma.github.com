@@ -16,6 +16,7 @@ header {
    padding: 10px 10px 10px 10px;
    border-radius: 20px 20px 0 0;
    position: relative;
+   margin: 0;
 }
 
 header#TitleHeader {
@@ -73,7 +74,13 @@ h3 {
    transform: translate(-50%, -50%);
 }
 
-article p {
+article h4 {
+   margin: 20px;
+   font-size: 24px;
+   text-decoration: underline;
+}
+
+article p, article h5 {
    margin: 20px;
    font-size: 18px;
    line-height: 1.5;
@@ -92,6 +99,23 @@ article ul {
 article ul li {
    font-size: 20px;
    line-height: 1.5;
+}
+
+article figure {
+   margin: 20px;
+   max-width: 100%;
+   height: auto;
+}
+
+article figure img {
+   display: block;
+   max-width: 100%;
+}
+
+article figure figcaption {
+   margin-top: 5px;
+   font-size: 14px;
+   color: #767676;
 }
 
 footer {
