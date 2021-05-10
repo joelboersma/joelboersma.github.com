@@ -47,33 +47,31 @@ img {
    transform: translate(-50%, -50%);
    left: 50%;
 
+   width: 500px;
+   height: 500px;
+   object-fit: cover;
+
+   opacity: 50%;
+
    transition: all 1s;
 }
 
 img.focus {
    width: 600px;
    height: 600px;
-   object-fit: cover;
    top: 50%;
+   opacity: 100%;
 }
 
-img.notFocus {
-   width: 500px;
-   height: 500px;
-   object-fit: cover;
-
-   opacity: 50%;
-}
-
-img.notFocus.above {
+img.above {
    top: calc(50% - 580px);
 }
 
-img.notFocus.below {
+img.below {
    top: calc(50% + 580px);
 }
 
-img.notFocus.hidden {
+img.hidden {
    opacity: 0%;
 }
 
