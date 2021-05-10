@@ -6,24 +6,77 @@ body {
    background-color: #A7C7E7;
    position: relative;
    display: flex;
+
+   
 }
 
 h1 {
    position: absolute;
    top: 0;
    right: 0;
+   z-index: 1;
    margin: 20px;
 }
 
-#pictures, #captions {
+#left, #right {
    width: 100%;
    height: 100vh;
+   position: relative;
+}
+
+#left {
+   /* background-color: blue; */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   overflow: hidden;
 }
 
 #pictures {
-   background-color: blue;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: min-content;
+   position: relative;
+   height: 100%;
 }
 
-#captions {
-   background-color: red;
+img {
+   position: absolute;
+   transform: translate(-50%, -50%);
+   left: 50%;
+
+   transition: all 1s;
+}
+
+img.focus {
+   width: 600px;
+   height: 600px;
+   object-fit: cover;
+   top: 50%;
+}
+
+img.notFocus {
+   width: 500px;
+   height: 500px;
+   object-fit: cover;
+
+   opacity: 50%;
+}
+
+img.notFocus.above {
+   top: calc(50% - 580px);
+}
+
+img.notFocus.below {
+   top: calc(50% + 580px);
+}
+
+img.notFocus.hidden {
+   opacity: 0%;
+}
+
+#right {
+   /* background-color: red; */
 }
