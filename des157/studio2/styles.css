@@ -75,6 +75,14 @@ img.hidden {
    opacity: 0%;
 }
 
+img.above.hidden {
+   top: -580px
+}
+
+img.below.hidden {
+   top: calc(100% + 580px);
+}
+
 #right {
    /* background-color: red; */
 }
