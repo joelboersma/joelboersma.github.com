@@ -37,6 +37,7 @@
       }
    });
 
+   // Create timeout for 1 second before user can scroll again
    function setScrollingTimeout() {
       setTimeout(function() {
          scrollingNow = false;
@@ -44,6 +45,7 @@
       }, 1000);
    }
 
+   // Change which image is in focus
    function transitionImage() {
       console.log(focusImg);
 
