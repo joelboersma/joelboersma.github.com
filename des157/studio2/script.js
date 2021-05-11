@@ -4,6 +4,8 @@
 
    console.log('descriptions:', descriptions);
 
+   const heading = document.querySelector('main h2');
+   const paragraph = document.querySelector('main p');
    const images = document.querySelectorAll('#pictures img');
    const numImages = 6;
    let focusImg = 0;
@@ -21,16 +23,14 @@
             console.log('scrolling down');
 
             focusImg++;
-            setScrollingTimeout();
-            transitionImage();
+            startScroll();
          }
          else if (event.deltaY < 0 && focusImg > 0) {
             // scrolling up
             console.log('scrolling up');
 
             focusImg--;
-            setScrollingTimeout();
-            transitionImage();
+            startScroll();
          }
          else {
             console.log('out of bounds');
@@ -38,6 +38,12 @@
          }
       }
    });
+
+   function startScroll() {
+      setScrollingTimeout();
+      transitionImage();
+      transitionText();
+   }
 
    // Create timeout for 1 second before user can scroll again
    function setScrollingTimeout() {
@@ -70,5 +76,22 @@
          }
       }
    }
+
+   function transitionText() {
+      heading.classList.add('hidden');
+      paragraph.classList.add('hidden');
+      setTimeout(function() {
+         const data = descriptions[focusImg];
+         heading.innerHTML = data.date;
+         paragraph.innerHTML = data.description;
+
+         heading.classList.remove('hidden');
+         paragraph.classList.remove('hidden');
+      }, 500);
+   }
+
+   // init
+   heading.innerHTML = descriptions[0].date;
+   paragraph.innerHTML = descriptions[0].description;
 
 }());
