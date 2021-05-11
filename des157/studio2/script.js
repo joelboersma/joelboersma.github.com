@@ -6,6 +6,7 @@
 
    const heading = document.querySelector('main h2');
    const paragraph = document.querySelector('main p');
+   const dots = document.querySelectorAll('.dot');
    const images = document.querySelectorAll('#pictures img');
    const numImages = 6;
    let focusImg = 0;
@@ -43,6 +44,7 @@
       setScrollingTimeout();
       transitionImage();
       transitionText();
+      transitionDots();
    }
 
    // Create timeout for 1 second before user can scroll again
@@ -88,6 +90,17 @@
          heading.classList.remove('hidden');
          paragraph.classList.remove('hidden');
       }, 500);
+   }
+
+   function transitionDots() {
+      dots.forEach((dot, i) => {
+         if (i == focusImg) {
+            dot.classList.add('focus');
+         }
+         else {
+            dot.classList.remove('focus');
+         }
+      });
    }
 
    // init
