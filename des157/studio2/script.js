@@ -59,24 +59,23 @@
    function transitionImage() {
       console.log(focusImg);
 
-      for (let i = 0; i < numImages; i++) {
-         const thisImg = images[i];
-         thisImg.className = '';
+      images.forEach(function(img, i) {
+         img.className = '';
 
          if (i < focusImg) {
-            thisImg.classList.add('above');
+            img.classList.add('above');
          }
          else if (i > focusImg) {
-            thisImg.classList.add('below');
+            img.classList.add('below');
          }
          else {
-            thisImg.classList.add('focus');
+            img.classList.add('focus');
          }
 
          if (i > focusImg + 1 || i < focusImg - 1) {
-            thisImg.classList.add('hidden');
+            img.classList.add('hidden');
          }
-      }
+      });
    }
 
    function transitionText() {
@@ -93,7 +92,7 @@
    }
 
    function transitionDots() {
-      dots.forEach((dot, i) => {
+      dots.forEach(function(dot, i) {
          if (i == focusImg) {
             dot.classList.add('focus');
          }
