@@ -1,6 +1,5 @@
 (function(){
    'use strict';
-   // console.log('reading js');
 
    console.log('descriptions:', descriptions);
 
@@ -9,6 +8,7 @@
    const dots = document.querySelectorAll('.dot');
    const images = document.querySelectorAll('#pictures img');
    const numImages = 6;
+   const transitionLength = 1000;
    let focusImg = 0;
    let scrollingNow = false;
 
@@ -21,20 +21,15 @@
          // Which direction is the scroll?
          if (event.deltaY > 0 && focusImg < numImages - 1) {
             // scrolling down
-            console.log('scrolling down');
-
             focusImg++;
             startScroll();
          }
          else if (event.deltaY < 0 && focusImg > 0) {
             // scrolling up
-            console.log('scrolling up');
-
             focusImg--;
             startScroll();
          }
          else {
-            console.log('out of bounds');
             scrollingNow = false;
          }
       }
@@ -51,8 +46,7 @@
    function setScrollingTimeout() {
       setTimeout(function() {
          scrollingNow = false;
-         console.log('done!');
-      }, 1000);
+      }, transitionLength);
    }
 
    // Change which image is in focus
@@ -78,19 +72,26 @@
       });
    }
 
+   // Hide text, then change text, then show text
    function transitionText() {
+
+      // hide
       heading.classList.add('hidden');
       paragraph.classList.add('hidden');
+
       setTimeout(function() {
+         // change text to description corresponding to focused image
          const data = descriptions[focusImg];
          heading.innerHTML = data.date;
          paragraph.innerHTML = data.description;
 
+         // show
          heading.classList.remove('hidden');
          paragraph.classList.remove('hidden');
-      }, 500);
+      }, transitionLength / 2);
    }
 
+   // Focus the dot corresponding to the focused image
    function transitionDots() {
       dots.forEach(function(dot, i) {
          if (i == focusImg) {

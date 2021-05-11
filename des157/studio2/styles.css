@@ -89,7 +89,6 @@ img.below.hidden {
 }
 
 #content {
-   /* background-color: red; */
    display: flex;
    flex-direction: column;
 }
@@ -142,7 +141,6 @@ nav li {
 nav li a {
    padding: 10px;
    border-radius: 10px;
-   /* text-decoration: none; */
    color: black;
 }
 
