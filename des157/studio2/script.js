@@ -2,6 +2,8 @@
    'use strict';
    // console.log('reading js');
 
+   console.log('descriptions:', descriptions);
+
    const images = document.querySelectorAll('#pictures img');
    const numImages = 6;
    let focusImg = 0;
