@@ -15,7 +15,14 @@ h1 {
    top: 0;
    right: 0;
    z-index: 1;
+
    margin: 20px;
+   
+   color: #2C4A69;
+
+   font-size: 48px;
+   font-style: italic;
+   text-decoration: underline;
 }
 
 #left, #right {
@@ -85,4 +92,61 @@ img.below.hidden {
 
 #right {
    /* background-color: red; */
+   display: flex;
+   flex-direction: column;
+}
+
+main {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   flex-grow: 1;
+   margin: 50px;
+}
+
+main h2 {
+   font-size: 48px;
+}
+
+main p {
+   font-size: 24px;
+   line-height: 1.5;
+}
+
+footer {
+   display: flex;
+   justify-content: center;
+}
+
+nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+nav ul {
+   display: flex;
+   list-style-type: none;
+   padding: 0;
+   margin: 20px;
+   justify-content: space-evenly;
+   width: 300px;
+}
+
+nav li {
+   padding: 10px;
+   font-size: 24px;
+}
+
+nav li a {
+   padding: 10px;
+   border-radius: 10px;
+   /* text-decoration: none; */
+   color: black;
+}
+
+nav li a:hover {
+   background-color: rgba(0, 0, 0, .25);
+   transition: all 1s;
 }
