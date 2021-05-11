@@ -21,6 +21,6 @@ const descriptions = [
    },
    {
       "date": "December 27, 2020",
-      "description": "Tiger loves to nap on the couch. During the winter he will be on that couch almost all day. We joke that he never leaves it. My dad will occasionally nap on the couch too, and it seems like Tiger enjoys the company. My dad often jokes about not liking the cats and wanting to get rid of them. I don't believe him."
+      "description": "Tiger loves to nap on the couch. During the winter he will be on that couch almost all day. We joke that he never leaves it. My dad will occasionally nap on the couch too, and it seems like Tiger enjoys the company. What a relaxing life..."
    }
 ];

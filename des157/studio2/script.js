@@ -7,6 +7,7 @@
    const paragraph = document.querySelector('main p');
    const dots = document.querySelectorAll('.dot');
    const images = document.querySelectorAll('#pictures img');
+   const emojis = document.querySelectorAll('#pictures span');
    const numImages = 6;
    const transitionLength = 1000;
    let focusImg = 0;
@@ -51,25 +52,33 @@
 
    // Change which image is in focus
    function transitionImage() {
-      console.log(focusImg);
+      // console.log(focusImg);
 
-      images.forEach(function(img, i) {
+      for (let i = 0; i < numImages; i++) {
+         const img = images[i];
+         const emoji = emojis[i];
+
          img.className = '';
+         emoji.className = '';
 
          if (i < focusImg) {
             img.classList.add('above');
+            emoji.classList.add('above');
          }
          else if (i > focusImg) {
             img.classList.add('below');
+            emoji.classList.add('below');
          }
          else {
             img.classList.add('focus');
+            emoji.classList.add('focus');
          }
 
          if (i > focusImg + 1 || i < focusImg - 1) {
             img.classList.add('hidden');
+            emoji.classList.add('hidden');
          }
-      });
+      }
    }
 
    // Hide text, then change text, then show text
