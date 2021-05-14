@@ -7,21 +7,55 @@
    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet"> 
    <link href="styles.css" rel="stylesheet">
-   <script src="script.js" defer></script>
+   <script src="descriptions.js"></script>
+   <script type="module" src="script.js" defer></script>
    <title>Every Picture</title>
 </head>
 <body>
    <h1>Every Picture</h1>
-   <div id="left">
+   <div id="slideshow">
       <div id="pictures">
-         <img src="images/tiger-scared.jpg" alt="Tiger laying under my bed (Jul 4, 2018)" class="focus">
-         <img src="images/sally-sink.jpg" alt="Sally laying in the sink (May 19, 2020)" class="below">
-         <img src="images/sally-suitcase.jpg" alt="Sally laying in my suitcase (Jun 22, 2020)" class="below hidden">
-         <img src="images/tiger-wants-food.jpg" alt="Tiger sitting and waiting for food (Nov 29, 2020)" class="below hidden">
-         <img src="images/sally-sisters-room.jpg" alt="Sally waiting for my sister to open the door to her room (Nov 29, 2020)" class="below hidden">
-         <img src="images/tiger-dad-sleep.jpg" alt="Tiger and my dad napping (Dec 27, 2020)" class="below hidden">
+         <img src="images/tiger-scared-edited.jpg" alt="Tiger laying under my bed" class="focus">
+         <span class="focus">🎆</span>
+         <img src="images/sally-sink.jpg" alt="Sally laying in the sink" class="below">
+         <span class="below">🚰</span>
+         <img src="images/sally-suitcase.jpg" alt="Sally laying in my suitcase" class="below hidden">
+         <span class="below hidden">🧳</span>
+         <img src="images/tiger-wants-food.jpg" alt="Tiger sitting and waiting for food" class="below hidden">
+         <span class="below hidden">🐟</span>
+         <img src="images/sally-sisters-room.jpg" alt="Sally waiting for my sister to open the door to her room" class="below hidden">
+         <span class="below hidden">🚪</span>
+         <img src="images/tiger-dad-sleep.jpg" alt="Tiger and my dad napping" class="below hidden">
+         <span class="below hidden">💤</span>
       </div>
    </div>
-   <div id="right"></div>
+   <div id="content">
+      <main>
+         <h2>[Warning]</h2>
+         <p>
+            This is placeholder text. If you are seeing this, descriptions.js has not loaded properly.
+         </p>
+      </main>
+      <footer>
+         <nav>
+            <ul>
+                <li>
+                    <a href="https://validator.w3.org/check?uri=referer">HTML</a>
+                </li>
+                <li>
+                    <a href="https://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+                </li>
+            </ul>
+         </nav>
+      </footer>
+   </div>
+   <div id="scrollSide">
+      <div class="dot focus"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+   </div>
 </body>
 </html>

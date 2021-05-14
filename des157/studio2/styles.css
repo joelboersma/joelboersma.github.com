@@ -6,8 +6,6 @@ body {
    background-color: #A7C7E7;
    position: relative;
    display: flex;
-
-   
 }
 
 h1 {
@@ -15,16 +13,27 @@ h1 {
    top: 0;
    right: 0;
    z-index: 1;
+
    margin: 20px;
+   
+   color: #2C4A69;
+
+   font-size: 48px;
+   /* font-style: italic;
+   text-decoration: underline; */
 }
 
-#left, #right {
+.hidden {
+   opacity: 0%;
+}
+
+#slideshow, #content {
    width: 100%;
    height: 100vh;
    position: relative;
 }
 
-#left {
+#slideshow {
    /* background-color: blue; */
    display: flex;
    flex-direction: column;
@@ -71,10 +80,6 @@ img.below {
    top: calc(50% + 580px);
 }
 
-img.hidden {
-   opacity: 0%;
-}
-
 img.above.hidden {
    top: -580px
 }
@@ -83,6 +88,123 @@ img.below.hidden {
    top: calc(100% + 580px);
 }
 
-#right {
-   /* background-color: red; */
+#pictures span {
+   /* display: block; */
+
+   position: absolute;
+   transform: translate(-50%, -50%);
+   left: 50%;
+   z-index: 1;
+
+   margin: 0;
+   padding: 15px 13px 0 13px;
+   border-radius: 20px;
+   
+   font-size: 72px;
+
+   background-color: rgba(0, 0, 0, .5);
+
+   transition: all 1s;
+}
+
+#pictures span.focus {
+   top: 50%;
+   opacity: 0%;
+}
+
+#pictures span.above {
+   top: min(calc(50% - 325px), 10%);
+}
+
+#pictures span.below {
+   top: max(calc(50% + 325px), 90%);
+}
+
+#pictures span.above.hidden {
+   top: -325px
+}
+
+#pictures span.below.hidden {
+   top: calc(100% + 325px);
+}
+
+#content {
+   display: flex;
+   flex-direction: column;
+}
+
+main {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   flex-grow: 1;
+   margin: 50px;
+}
+
+main h2 {
+   font-size: 48px;
+   transition: all 0.5s;
+}
+
+main p {
+   font-size: 24px;
+   line-height: 1.5;
+   transition: all 0.5s;
+}
+
+footer {
+   display: flex;
+   justify-content: center;
+}
+
+nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+nav ul {
+   display: flex;
+   list-style-type: none;
+   padding: 0;
+   margin: 20px;
+   justify-content: space-evenly;
+   width: 300px;
+}
+
+nav li {
+   padding: 10px;
+   font-size: 24px;
+}
+
+nav li a {
+   padding: 10px;
+   border-radius: 10px;
+   color: black;
+}
+
+nav li a:hover {
+   background-color: rgba(0, 0, 0, .1);
+   transition: all 0.5s;
+}
+
+#scrollSide {
+   width: 100px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.dot {
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: gray;
+   margin: 10px;
+}
+
+.dot.focus {
+   background-color: #444;
 }
