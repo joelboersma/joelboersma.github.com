@@ -1,25 +1,33 @@
 body {
-    font-family: Arial;
-    color: #333;
-    padding: 50px;
-    line-height: 1.5em;
+   font-family: 'Coiny', cursive;
+   color: #333;
+   padding: 50px;
+   line-height: 1.5em;
+}
+
+h1 {
+   
 }
 
 button { 
-    padding: 10px;
+   padding: 10px;
 }
 
 div {
-    padding: 20px;
+   padding: 20px;
+}
+
+.card {
+   font-family: 'Crete Round', serif;
 }
 
 #gamecontrol, #score {
-    background-color: aliceblue;
+   background-color: aliceblue;
 }
 
 #game {
-    background-color:#eaeaea;
+   background-color:#eaeaea;
 }
 #actions {
-    background-color: silver;
+   background-color: silver;
 }
