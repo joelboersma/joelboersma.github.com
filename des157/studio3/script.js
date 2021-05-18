@@ -5,6 +5,7 @@
    const gameControl = document.getElementById('gamecontrol');
    const game = document.getElementById('game');
    const score = document.getElementById('score');
+   const scoreboards = document.getElementsByClassName('scoreboard');
    const actionArea = document.getElementById('actions');
 
    let gameData = {
@@ -81,18 +82,18 @@
    }
 
    function checkWinningCondition() {
+      showCurrentScore();
       if (gameData.score[gameData.index] >= gameData.gameEnd) {
-         score.innerHTML = `<h2>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h2>`;
+         // score.innerHTML = `<h2>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h2>`;
+         console.log(`${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!`);
          actionArea.innerHTML = '';
          document.getElementById('quit').innerHTML = 'Start a New Game';
-      }
-      else {
-         showCurrentScore();
       }
    }
 
    function showCurrentScore() {
-      score.innerHTML = `<p>The score is currently <strong>${gameData.players[0]}: ${gameData.score[0]}</strong> and <strong>${gameData.players[1]}: ${gameData.score[1]}</strong></p>`;
+      scoreboards[0].children[1].innerHTML = gameData.score[0];
+      scoreboards[1].children[1].innerHTML = gameData.score[1];
    }
 
 })();

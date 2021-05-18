@@ -13,16 +13,25 @@
    <header>
       <h1>Game of PIG</h1>
    </header>
-   <p>There are two players. The player whose turn it is rolls the dice. The total of the roll is added to the current player's score, unless either die comes up as a "one". If this happens, this player's turn is over, and it is the other player’s turn. After each roll, the current player can either roll again, (assuming a "one" was not rolled) or if the current player feels that luck is running thin, they can pass to the other player. The first player to get 30 points or higher wins.</p> 
-   <p>Oh, and if you roll two "ones" (snake eyes), your current score gets zeroed out. So don’t do that.</p>
-
-   <div id="gamecontrol">
-      <h2>Start a Game</h2>
-      <button id="startgame">Randomly Pick the First Player, and Start the Game</button>
-   </div>
-
-   <div id="game"></div>
-   <div id="actions"></div>
-   <div id="score"></div>
+   <!-- <p>There are two players. The player whose turn it is rolls the dice. The total of the roll is added to the current player's score, unless either die comes up as a "one". If this happens, this player's turn is over, and it is the other player’s turn. After each roll, the current player can either roll again, (assuming a "one" was not rolled) or if the current player feels that luck is running thin, they can pass to the other player. The first player to get 30 points or higher wins.</p> 
+   <p>Oh, and if you roll two "ones" (snake eyes), your current score gets zeroed out. So don’t do that.</p> -->
+   <main>
+      <div id="gamecontrol">
+         <h2>Start a Game</h2>
+         <button id="startgame">Randomly Pick the First Player, and Start the Game</button>
+      </div>
+   
+      <div id="game"></div>
+      <div id="actions"></div>
+   </main>
+   
+   <aside class="scoreboard p1">
+      <div class="name">[Player 1]</div>
+      <div class="points">0</div>
+   </aside>
+   <aside class="scoreboard p2">
+      <div class="name">[Player 2]</div>
+      <div class="points">0</div>
+   </aside>
 </body>
 </html>
