@@ -25,6 +25,10 @@ article {
    line-height: 1.5;
 }
 
+section {
+   margin-bottom: 40px;
+}
+
 h2 {
    font-size: 26px;
 }
