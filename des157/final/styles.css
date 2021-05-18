@@ -32,7 +32,7 @@ p {
 footer {
    display: flex;
    justify-content: center;
-   background-color: #ccc;
+   background-color: #ddd;
    min-width: 100vw;
 }
 
