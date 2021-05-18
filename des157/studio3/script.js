@@ -4,13 +4,12 @@
    const startGame = document.getElementById('startgame');
    const gameControl = document.getElementById('gamecontrol');
    const game = document.getElementById('game');
-   const score = document.getElementById('score');
    const scoreboards = document.getElementsByClassName('scoreboard');
    const actionArea = document.getElementById('actions');
 
    let gameData = {
       dice: ['1die.jpg', '2die.jpg', '3die.jpg', '4die.jpg', '5die.jpg', '6die.jpg'],
-      players: ['player 1', 'player 2'],
+      players: ['Player 1', 'Player 2'],
       score: [0, 0],
       roll1: 0,
       roll2: 0,
@@ -23,6 +22,13 @@
       gameData.index = Math.round(Math.random());
       gameControl.innerHTML = '<h2>The Game Has Started</h2>';
       gameControl.innerHTML += '<button id="quit">Wanna Quit?</button>';
+
+      // set up scoreboards
+      for (let i = 0; i < scoreboards.length; i++) {
+         const scoreboard = scoreboards[i];
+         scoreboard.children[0].innerHTML = gameData.players[i];
+         scoreboard.classList.remove('invisible');
+      }
 
       document.getElementById('quit').addEventListener('click', function() {
          location.reload();

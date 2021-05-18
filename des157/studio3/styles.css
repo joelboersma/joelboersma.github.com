@@ -7,6 +7,18 @@ body {
    /* box-sizing: border-box; */
 }
 
+.p1 {
+   color: #EE0000;
+}
+
+.p2 {
+   color: #00AAFF;
+}
+
+.invisible {
+   opacity: 0;
+}
+
 header {
    width: 100%;
    background-color: rgba(0, 0, 0, .3);
@@ -19,14 +31,6 @@ h1 {
    font-size: 48px;
    margin: 0;
    padding: 20px 20px 12px 20px;
-}
-
-.p1 {
-   color: #EE0000;
-}
-
-.p2 {
-   color: #00AAFF;
 }
 
 button { 
