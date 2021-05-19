@@ -55,6 +55,10 @@ footer {
    min-width: 100vw;
 }
 
+article li {
+   font-size: 20px;
+}
+
 nav {
    display: flex;
    justify-content: center;
