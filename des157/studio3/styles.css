@@ -5,6 +5,8 @@ body {
    min-height: 100vh;
    line-height: 1;
    /* box-sizing: border-box; */
+
+   position: relative;
 }
 
 .p1 {
@@ -31,6 +33,21 @@ h1 {
    font-size: 48px;
    margin: 0;
    padding: 20px 20px 12px 20px;
+}
+
+h1.big {
+   font-size: 128px;
+   padding-top: 64px;
+}
+
+#rules {
+   max-width: 600px;
+   font-size: 20px;
+}
+
+#rules h2 {
+   font-size: 48px;
+   margin-bottom: 10px;
 }
 
 button { 

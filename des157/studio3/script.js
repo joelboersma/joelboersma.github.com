@@ -1,6 +1,7 @@
 (function(){
    'use strict';
 
+   const title = document.querySelector('h1');
    const startGame = document.getElementById('startgame');
    const gameControl = document.getElementById('gamecontrol');
    const game = document.getElementById('game');
@@ -22,6 +23,8 @@
       gameData.index = Math.round(Math.random());
       gameControl.innerHTML = '<h2>The Game Has Started</h2>';
       gameControl.innerHTML += '<button id="quit">Wanna Quit?</button>';
+      
+      title.className = "";
 
       // set up scoreboards
       for (let i = 0; i < scoreboards.length; i++) {
