@@ -12,6 +12,8 @@
    const rules = document.getElementById('rules');
    const quitButton = document.getElementById('quit');
    const helpButton = document.getElementById('help');
+   const popup = document.getElementById('popup');
+   const doneButton = document.querySelector('#popup section button');
 
    let gameData = {
       dice: ['X.svg', 'Triangle.svg', 'Heart.svg', 'Diamond.svg', 'Club.svg', 'Spade.svg'],
@@ -45,6 +47,14 @@
       });
 
       setUpTurn();
+   });
+
+   helpButton.addEventListener('click', function() {
+      popup.removeAttribute('hidden');
+   });
+
+   doneButton.addEventListener('click', function() {
+      popup.setAttribute('hidden', 'hidden');
    });
 
    function changePlayerDisplay() {

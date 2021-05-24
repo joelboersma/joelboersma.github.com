@@ -98,7 +98,7 @@ h2 {
    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#gameControl, #game, #actions {
+#gameControl, #game, #actions, #popup section {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -223,4 +223,44 @@ h2 {
 
    background-color: #9462FF;
    font-size: 24px;
+}
+
+#popup {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100%;
+   background-color: #00000088;
+}
+
+#popup section {
+   background-color: rgb(255, 252, 208);
+   color: black;
+
+   padding: 30px;
+   max-width: 700px;
+   border-radius: 10px;
+
+   font-size: 20px;
+   line-height: 1.5;
+   
+   position: absolute;
+   transform: translate(-50%, -50%);
+   top: 50%;
+   left: 50%;
+}
+
+#popup section h2 {
+   text-align: center;
+   margin-bottom: 0
+}
+
+#popup section p {
+   margin: 10px 0 10px 0;
+}
+
+#popup section button {
+   margin-top: 20px;
+   width: 125px;
 }
