@@ -31,8 +31,7 @@
       rules.setAttribute('hidden', 'hidden');
 
       gameData.index = Math.round(Math.random());
-      let pNum = gameData.index == 0 ? 'p1' : 'p2';
-      gameControl.innerHTML = `<h2 class="${pNum}">${gameData.players[gameData.index]}'s Turn!</h2>`;
+      changePlayerDisplay();
 
       // set up scoreboards
       for (let i = 0; i < scoreboards.length; i++) {
@@ -47,6 +46,11 @@
 
       setUpTurn();
    });
+
+   function changePlayerDisplay() {
+      let pNum = gameData.index == 0 ? 'p1' : 'p2';
+      gameControl.innerHTML = `<h2 class="${pNum}">${gameData.players[gameData.index]}'s Turn!</h2>`;
+   }
 
    function setUpTurn() {
       // game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
@@ -72,13 +76,19 @@
          
          showCurrentScore();
 
-         setTimeout(setUpTurn, 200);
+         setTimeout(function() {
+            changePlayerDisplay();
+            setUpTurn();
+         }, 2000);
       }
       else if (gameData.roll1 === 1 || gameData.roll2 === 1) {
          gameData.index ? (gameData.index = 0) : (gameData.index = 1);
          gameStatus.innerHTML = `<p>Sorry, one of your rolls was a one. Switching to ${gameData.players[gameData.index]}</p>`;
 
-         setTimeout(setUpTurn, 2000);
+         setTimeout(function() {
+            changePlayerDisplay();
+            setUpTurn();
+         }, 2000);
       }
       else {
          gameData.score[gameData.index] += gameData.rollSum;
@@ -102,6 +112,8 @@
    function checkWinningCondition() {
       showCurrentScore();
       if (gameData.score[gameData.index] >= gameData.gameEnd) {
+         let pNum = gameData.index == 0 ? 'p1' : 'p2';
+         gameControl.innerHTML = `<h2 class="${pNum}">${gameData.players[gameData.index]} Wins!</h2>`;
          gameStatus.innerHTML = `<h3>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h3>`;
          console.log(`${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!`);
          actionArea.innerHTML = '<button id="restart">Start a New Game</button>';
