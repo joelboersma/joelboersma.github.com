@@ -14,7 +14,7 @@
    const helpButton = document.getElementById('help');
 
    let gameData = {
-      dice: ['1die.jpg', '2die.jpg', '3die.jpg', '4die.jpg', '5die.jpg', '6die.jpg'],
+      dice: ['X.svg', 'Triangle.svg', 'Heart.svg', 'Diamond.svg', 'Club.svg', 'Spade.svg'],
       players: ['Player 1', 'Player 2'],
       score: [0, 0],
       roll1: 0,
