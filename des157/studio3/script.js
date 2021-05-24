@@ -5,7 +5,7 @@
    const startButton = document.getElementById('startGame');
    const gameControl = document.getElementById('gameControl');
    const game = document.getElementById('game');
-   const dice = document.getElementById('dice');
+   const cards = document.getElementById('cards');
    const gameStatus = document.getElementById('gameStatus');
    const scoreboards = document.getElementsByClassName('scoreboard');
    const actionArea = document.getElementById('actions');
@@ -65,8 +65,14 @@
       gameData.roll1 = Math.floor(Math.random() * 6) + 1;
       gameData.roll2 = Math.floor(Math.random() * 6) + 1;
       gameStatus.innerHTML = '';
-      dice.innerHTML = `<img src="images/${gameData.dice[gameData.roll1-1]}">
-                        <img src="images/${gameData.dice[gameData.roll2-1]}">`;
+      // dice.innerHTML = `<img src="images/${gameData.dice[gameData.roll1-1]}">
+      //                   <img src="images/${gameData.dice[gameData.roll2-1]}">`;
+      cards.innerHTML = `<div class="card">${gameData.roll1}
+                           <img src="images/${gameData.dice[gameData.roll1-1]}">
+                        </div>
+                        <div class="card">${gameData.roll2}
+                           <img src="images/${gameData.dice[gameData.roll2-1]}">
+                        </div>`;
       gameData.rollSum = gameData.roll1 + gameData.roll2;
 
       if (gameData.rollSum === 2) {
