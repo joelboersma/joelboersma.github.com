@@ -10,23 +10,25 @@
    <script src="script.js" defer></script>
 </head>
 <body>
-   <header>
-      <h1 class="big">Game of PIG</h1>
+   <header hidden>
+      <h1>Game of PIG</h1>
    </header>
-
-   <section id="rules">
-      <h2>Rules</h2>
-      <p>There are two players. The player whose turn it is draws two cards. The total of the two cards is added to the current player's score, unless either card is a 1. If this happens, this player's turn is over, and it is the other player’s turn. After each draw, the current player can either draw again, (assuming a 1 was not drawn) or if the current player feels that luck is running thin, they can pass to the other player. The first player to get 30 points or higher wins.</p> 
-      <p>Oh, and if you draw two 1's (Double Crossed), your current score gets zeroed out. So don’t do that.</p>
-   </section>
    
    <main>
-      <div id="gamecontrol">
-         <h2>Start a Game</h2>
-         <button id="startgame">Randomly Pick the First Player, and Start the Game</button>
+      <section id="rules" class="backBox">
+         <h2>Game of PIG</h2>
+         <p>There are two players. The player whose turn it is draws two cards. The total of the two cards is added to the current player's score, unless either card is a 1. If this happens, this player's turn is over, and it is the other player’s turn. After each draw, the current player can either draw again, (assuming a 1 was not drawn) or if the current player feels that luck is running thin, they can pass to the other player. The first player to get 30 points or higher wins.</p> 
+         <p>Oh, and if you draw two 1's (Double Crossed), your current score gets zeroed out. So don’t do that.</p>
+      </section>
+
+      <div id="gameControl">
+         <button id="startGame">Start a Game</button>
       </div>
    
-      <div id="game"></div>
+      <div id="game">
+         <div id="dice"></div>
+         <div id="gameStatus"></div>
+      </div>
       <div id="actions"></div>
    </main>
    
@@ -38,5 +40,8 @@
       <div class="name"></div>
       <div class="points">0</div>
    </aside>
+
+   <button id="quit" hidden>Quit</button>
+   <button id="help" hidden>?</button>
 </body>
 </html>
