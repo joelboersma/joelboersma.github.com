@@ -76,7 +76,7 @@
 
    function setUpTurn() {
       // game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
-      actionArea.innerHTML = '<button id="roll">Roll the Dice</button>';
+      actionArea.innerHTML = '<button id="roll">Draw 2 Cards</button>';
       document.getElementById('roll').addEventListener('click', function() {
          throwDice();
       });
@@ -102,7 +102,7 @@
          tromboneSound.play();
          gameData.score[gameData.index] = 0;
          gameData.index ? (gameData.index = 0) : (gameData.index = 1);
-         gameStatus.innerHTML = '<p>Oh snap! Snake eyes!</p>';
+         gameStatus.innerHTML = '<p>Oh no, Double Crossed! Score reset to 0...</p>';
          
          showCurrentScore();
 
@@ -115,7 +115,7 @@
          // Rolled a 1
          buzzerSound.play();
          gameData.index ? (gameData.index = 0) : (gameData.index = 1);
-         gameStatus.innerHTML = `<p>Sorry, one of your rolls was a one. Switching to ${gameData.players[gameData.index]}</p>`;
+         gameStatus.innerHTML = `<p>Darn, you drew a 1. Switching to ${gameData.players[gameData.index]}...</p>`;
 
          setTimeout(function() {
             changePlayerDisplay();
@@ -125,8 +125,8 @@
       else {
          // Normal Roll
          gameData.score[gameData.index] += gameData.rollSum;
-         gameStatus.innerHTML = `<p>You rolled a ${gameData.rollSum}!</p>`;
-         actionArea.innerHTML = '<button id="rollAgain">Roll again</button> or <button id="pass">Pass</button>';
+         gameStatus.innerHTML = `<p>You drew ${gameData.rollSum} points!</p>`;
+         actionArea.innerHTML = '<button id="rollAgain">Draw again</button> or <button id="pass">Pass</button>';
 
          document.getElementById('rollAgain').addEventListener('click', function() {
             throwDice();
