@@ -80,11 +80,22 @@
       for (let i = 0; i < 5; i++) {
          const playerCard = Math.floor(Math.random() * 6) + 1;
          gameData.hands.player.push(playerCard);
-         playerHand.innerHTML += `<div class="card">${gameData.hands.player[i]}<img src="images/${gameData.cardIcons[playerCard]}"></div>`;
+         playerHand.innerHTML += `<div class="card c${i}">${gameData.hands.player[i]}<img src="images/${gameData.cardIcons[playerCard]}"></div>`;
 
          const dealerCard = Math.floor(Math.random() * 6) + 1;
          gameData.hands.dealer.push(dealerCard);
-         dealerHand.innerHTML += `<div class="card">${gameData.hands.dealer[i]}<img src="images/${gameData.cardIcons[dealerCard]}"></div>`;
+         dealerHand.innerHTML += `<div class="card c${i}">${gameData.hands.dealer[i]}<img src="images/${gameData.cardIcons[dealerCard]}"></div>`;
+      }
+
+      for (const card of playerHand.children) {
+         card.addEventListener('click', () => {
+            if (card.classList.contains('selected')) {
+               card.classList.remove('selected');
+            }
+            else {
+               card.classList.add('selected');
+            }
+         });
       }
    }
 
