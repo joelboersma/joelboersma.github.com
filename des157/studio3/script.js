@@ -15,6 +15,9 @@
    const popup = document.getElementById('popup');
    const doneButton = document.querySelector('#popup section button');
 
+   // audio
+   const cardDealSound = document.getElementById('cardDeal');
+
    let gameData = {
       dice: ['X.svg', 'Triangle.svg', 'Heart.svg', 'Diamond.svg', 'Club.svg', 'Spade.svg'],
       players: ['Player 1', 'Player 2'],
@@ -71,6 +74,7 @@
    }
 
    function throwDice() {
+      cardDealSound.play();
       actionArea.innerHTML = '';
       gameData.roll1 = Math.floor(Math.random() * 6) + 1;
       gameData.roll2 = Math.floor(Math.random() * 6) + 1;
@@ -117,6 +121,7 @@
 
          document.getElementById('pass').addEventListener('click', function() {
             gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+            changePlayerDisplay();
             setUpTurn();
          });
 
@@ -131,7 +136,6 @@
          let pNum = gameData.index == 0 ? 'p1' : 'p2';
          gameControl.innerHTML = `<h2 class="${pNum}">${gameData.players[gameData.index]} Wins!</h2>`;
          gameStatus.innerHTML = `<h3>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h3>`;
-         console.log(`${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!`);
          actionArea.innerHTML = '<button id="restart">Start a New Game</button>';
          document.getElementById('restart').addEventListener('click', function() {
             location.reload();
