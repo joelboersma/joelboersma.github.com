@@ -5,6 +5,7 @@
    const header = document.querySelector('header');
    const footer = document.querySelector('footer');
    const actionArea = document.getElementById('actions');
+   const drawButton = document.getElementById('draw');
    const rules = document.getElementById('rules');
    const startButton = document.getElementById('startGame');
    const quitButton = document.getElementById('quit');
@@ -31,6 +32,8 @@
          player: [],
          dealer: []
       },
+      cardsSelected: [false, false, false, false, false],
+      numCardsSelected: 0,
       bank: 100,
       betAmount: 5
    };
@@ -63,7 +66,6 @@
    // Set up the round
    function setUpRound() {
       dealCards();
-
       // set up player actions
       // player actions (drawing, betting [later])
       // dealer drawing
@@ -73,27 +75,48 @@
    }
 
    function dealCards() {
-      // Randomly determine cards
+      // TODO: move these to a reset() function
       gameData.hands.player.splice(0);
+      gameData.cardsSelected = Array(5).fill(false);
+      gameData.numCardsSelected = 0;
       playerHand.innerHTML = ''
       dealerHand.innerHTML = ''
+
+      // Randomly determine cards
       for (let i = 0; i < 5; i++) {
-         const playerCard = Math.floor(Math.random() * 6) + 1;
-         gameData.hands.player.push(playerCard);
-         playerHand.innerHTML += `<div class="card c${i}">${gameData.hands.player[i]}<img src="images/${gameData.cardIcons[playerCard]}"></div>`;
+         // Make dealer card
+         const dealerCardVal = Math.floor(Math.random() * 6) + 1;
+         gameData.hands.dealer.push(dealerCardVal);
+         const dealerCard = document.createElement('div');
+         dealerCard.className = `card c${i}`;
+         dealerCard.innerHTML = `${gameData.hands.dealer[i]}<img src="images/${gameData.cardIcons[dealerCardVal]}">`;
+         dealerHand.appendChild(dealerCard);
 
-         const dealerCard = Math.floor(Math.random() * 6) + 1;
-         gameData.hands.dealer.push(dealerCard);
-         dealerHand.innerHTML += `<div class="card c${i}">${gameData.hands.dealer[i]}<img src="images/${gameData.cardIcons[dealerCard]}"></div>`;
-      }
+         // Make player card
+         const playerCardVal = Math.floor(Math.random() * 6) + 1;
+         gameData.hands.player.push(playerCardVal);
+         const playerCard = document.createElement('div');
+         playerCard.className = `card c${i}`;
+         playerCard.innerHTML = `${gameData.hands.player[i]}<img src="images/${gameData.cardIcons[playerCardVal]}">`;
+         playerHand.appendChild(playerCard);
 
-      for (const card of playerHand.children) {
-         card.addEventListener('click', () => {
-            if (card.classList.contains('selected')) {
-               card.classList.remove('selected');
+         // Add click listener to player card for selecting
+         playerCard.addEventListener('click', () => {
+            if (playerCard.classList.contains('selected')) {
+               playerCard.classList.remove('selected');
+               gameData.cardsSelected[i] = false;
+               gameData.numCardsSelected--;
+               if (gameData.numCardsSelected === 0) {
+                  drawButton.innerHTML = 'Hold';
+               }
             }
             else {
-               card.classList.add('selected');
+               playerCard.classList.add('selected');
+               gameData.cardsSelected[i] = true;
+               if (gameData.numCardsSelected === 0) {
+                  drawButton.innerHTML = 'Draw';
+               }
+               gameData.numCardsSelected++;
             }
          });
       }

@@ -185,20 +185,10 @@ h2 {
    font-size: 24px;
 }
 
-#roll {
-   width: 285px;
-}
-
-#rollAgain {
+#draw {
    width: 250px;
-   margin-bottom: 14px;
-}
-
-#pass {
-   height: 40px;
-   font-size: 24px;
-   background-color: #748098;
-   margin-top: 10px;
+   height: 65px;
+   font-size: 48px;
 }
 
 #restart {
