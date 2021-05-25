@@ -1,10 +1,10 @@
 (function(){
    'use strict';
 
+   // Elements
    const header = document.querySelector('header');
    const startButton = document.getElementById('startGame');
    const gameControl = document.getElementById('gameControl');
-   const game = document.getElementById('game');
    const cards = document.getElementById('cards');
    const gameStatus = document.getElementById('gameStatus');
    const scoreboards = document.getElementsByClassName('scoreboard');
@@ -15,7 +15,7 @@
    const popup = document.getElementById('popup');
    const doneButton = document.querySelector('#popup section button');
 
-   // audio
+   // Audio
    const beginSound = new Audio('media/begin.mp3');
    const cardDealSound = new Audio('media/cardDeal.mp3');
    const tadaSound = new Audio('media/tada.mp3');
@@ -45,13 +45,14 @@
       gameData.index = Math.round(Math.random());
       changePlayerDisplay();
 
-      // set up scoreboards
+      // Set up scoreboards
       for (let i = 0; i < scoreboards.length; i++) {
          const scoreboard = scoreboards[i];
          scoreboard.children[0].innerHTML = gameData.players[i];
          scoreboard.classList.remove('invisible');
       }
 
+      // Reload when pushing quit button
       document.getElementById('quit').addEventListener('click', function() {
          location.reload();
       });
@@ -61,47 +62,52 @@
       setUpTurn();
    });
 
+   // Popup toggling
    helpButton.addEventListener('click', function() {
       popup.removeAttribute('hidden');
    });
-
    doneButton.addEventListener('click', function() {
       popup.setAttribute('hidden', 'hidden');
    });
 
+   // Change the h2 on the main page depending on whose turn it is
    function changePlayerDisplay() {
       let pNum = gameData.index == 0 ? 'p1' : 'p2';
       gameControl.innerHTML = `<h2 class="${pNum}">${gameData.players[gameData.index]}'s Turn!</h2>`;
    }
 
+   // Set up the turn
    function setUpTurn() {
-      // game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
       actionArea.innerHTML = '<button id="roll">Draw 2 Cards</button>';
       document.getElementById('roll').addEventListener('click', function() {
          throwDice();
       });
    }
 
+   // Current player throws/draws the dice/cards
    function throwDice() {
-      actionArea.innerHTML = '';
+      // Determine rolls
       gameData.roll1 = Math.floor(Math.random() * 6) + 1;
       gameData.roll2 = Math.floor(Math.random() * 6) + 1;
+      gameData.rollSum = gameData.roll1 + gameData.roll2;
+      
+      actionArea.innerHTML = '';
       gameStatus.innerHTML = '';
-      // dice.innerHTML = `<img src="images/${gameData.dice[gameData.roll1-1]}">
-      //                   <img src="images/${gameData.dice[gameData.roll2-1]}">`;
+
+      // Show dice/cards
       cards.innerHTML = `<div class="card">${gameData.roll1}
                            <img src="images/${gameData.dice[gameData.roll1-1]}">
                         </div>
                         <div class="card">${gameData.roll2}
                            <img src="images/${gameData.dice[gameData.roll2-1]}">
                         </div>`;
-      gameData.rollSum = gameData.roll1 + gameData.roll2;
 
+      // Based on roll...
       if (gameData.rollSum === 2) {
          // Snake Eyes
          tromboneSound.play();
-         gameData.score[gameData.index] = 0;
-         gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+         gameData.score[gameData.index] = 0;  // reset score
+         gameData.index ? (gameData.index = 0) : (gameData.index = 1);  // change player
          gameStatus.innerHTML = '<p>Oh no, Double Crossed! Score reset to 0...</p>';
          
          showCurrentScore();
@@ -114,7 +120,7 @@
       else if (gameData.roll1 === 1 || gameData.roll2 === 1) {  
          // Rolled a 1
          buzzerSound.play();
-         gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+         gameData.index ? (gameData.index = 0) : (gameData.index = 1);  // change player
          gameStatus.innerHTML = `<p>Darn, you drew a 1. Switching to ${gameData.players[gameData.index]}...</p>`;
 
          setTimeout(function() {
@@ -124,33 +130,37 @@
       }
       else {
          // Normal Roll
-         gameData.score[gameData.index] += gameData.rollSum;
+         gameData.score[gameData.index] += gameData.rollSum;  // add roll to score
          gameStatus.innerHTML = `<p>You drew ${gameData.rollSum} points!</p>`;
          actionArea.innerHTML = '<button id="rollAgain">Draw again</button> or <button id="pass">Pass</button>';
 
+         // Roll Again button
          document.getElementById('rollAgain').addEventListener('click', function() {
             throwDice();
          });
 
+         // Pass button
          document.getElementById('pass').addEventListener('click', function() {
-            gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+            gameData.index ? (gameData.index = 0) : (gameData.index = 1);  // change player
             changePlayerDisplay();
             setUpTurn();
          });
 
          checkWinningCondition();
-
       }
    }
 
    function checkWinningCondition() {
       showCurrentScore();
       if (gameData.score[gameData.index] >= gameData.gameEnd) {
+         // Current player has won!
          tadaSound.play();
          let pNum = gameData.index == 0 ? 'p1' : 'p2';
          gameControl.innerHTML = `<h2 class="${pNum}">${gameData.players[gameData.index]} Wins!</h2>`;
          gameStatus.innerHTML = `<h3>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h3>`;
          actionArea.innerHTML = '<button id="restart">Start a New Game</button>';
+
+         // Reload when pushing restart button
          document.getElementById('restart').addEventListener('click', function() {
             location.reload();
          });
@@ -160,6 +170,7 @@
       }
    }
 
+   // Updates the scoreboards
    function showCurrentScore() {
       scoreboards[0].children[1].innerHTML = gameData.score[0];
       scoreboards[1].children[1].innerHTML = gameData.score[1];
