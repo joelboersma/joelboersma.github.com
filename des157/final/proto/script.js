@@ -42,8 +42,8 @@
       // header.removeAttribute('hidden');
       quitButton.removeAttribute('hidden');
       helpButton.removeAttribute('hidden');
-      rules.setAttribute('hidden', 'hidden');
-      footer.setAttribute('hidden', 'hidden');
+      rules.toggleAttribute('hidden');
+      footer.toggleAttribute('hidden');
 
       // Reload when pushing quit button
       document.getElementById('quit').addEventListener('click', function() {
@@ -55,7 +55,7 @@
          popup.removeAttribute('hidden');
       });
       doneButton.addEventListener('click', function() {
-         popup.setAttribute('hidden', 'hidden');
+         popup.toggleAttribute('hidden');
       });
 
       beginSound.play();
@@ -66,12 +66,22 @@
    // Set up the round
    function setUpRound() {
       dealCards();
+
       // set up player actions
-      // player actions (drawing, betting [later])
-      // dealer drawing
-      // show hands
-      // determine winner
-      // payouts [later]
+      actionArea.removeAttribute('hidden');
+
+      // player actions
+      // drawing
+      drawButton.addEventListener('click', function() {
+         actionArea.toggleAttribute('hidden');
+         replacePlayerCards();
+         // dealer drawing
+         // show hands
+         // determine winner
+         // payouts [later]
+      });
+
+      // TODO: Betting
    }
 
    function dealCards() {
@@ -120,6 +130,21 @@
             }
          });
       }
+   }
+
+   function replacePlayerCards() {
+      gameData.cardsSelected.forEach(function(selected, i) {
+         if (selected) {
+            const newVal = Math.floor(Math.random() * 6) + 1;
+            gameData.hands.player[i] = newVal;
+
+            const card = playerHand.children[i];
+            card.classList.remove('selected');
+            card.innerHTML = `${newVal}<img src="images/${gameData.cardIcons[newVal]}">`;
+
+            gameData.cardsSelected[i] = false;
+         }
+      });
    }
 
 })();
