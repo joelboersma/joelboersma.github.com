@@ -32,7 +32,6 @@
          player: [],
          dealer: []
       },
-      cardsSelected: [false, false, false, false, false],
       numCardsSelected: 0,
       bank: 100,
       betAmount: 5
@@ -74,6 +73,12 @@
       // drawing
       drawButton.addEventListener('click', function() {
          actionArea.toggleAttribute('hidden');
+         
+         for (const card of playerHand.children) {
+            card.classList.remove('selectable');
+            card.removeEventListener('click', toggleCardSelect);
+         }
+
          replacePlayerCards();
          // dealer drawing
          // show hands
@@ -81,7 +86,7 @@
          // payouts [later]
       });
 
-      // TODO: Betting
+      // TODO: Betting Button Event Listeners
    }
 
    function dealCards() {
@@ -92,7 +97,7 @@
       playerHand.innerHTML = ''
       dealerHand.innerHTML = ''
 
-      // Randomly determine cards
+      // Randomly determine and construct cards
       for (let i = 0; i < 5; i++) {
          // Make dealer card
          const dealerCardVal = Math.floor(Math.random() * 6) + 1;
@@ -106,45 +111,51 @@
          const playerCardVal = Math.floor(Math.random() * 6) + 1;
          gameData.hands.player.push(playerCardVal);
          const playerCard = document.createElement('div');
-         playerCard.className = `card c${i}`;
+         playerCard.className = `card c${i} selectable`;
          playerCard.innerHTML = `${gameData.hands.player[i]}<img src="images/${gameData.cardIcons[playerCardVal]}">`;
          playerHand.appendChild(playerCard);
 
          // Add click listener to player card for selecting
-         playerCard.addEventListener('click', () => {
-            if (playerCard.classList.contains('selected')) {
-               playerCard.classList.remove('selected');
-               gameData.cardsSelected[i] = false;
-               gameData.numCardsSelected--;
-               if (gameData.numCardsSelected === 0) {
-                  drawButton.innerHTML = 'Hold';
-               }
-            }
-            else {
-               playerCard.classList.add('selected');
-               gameData.cardsSelected[i] = true;
-               if (gameData.numCardsSelected === 0) {
-                  drawButton.innerHTML = 'Draw';
-               }
-               gameData.numCardsSelected++;
-            }
-         });
+         playerCard.addEventListener('click', toggleCardSelect);
+      }
+   }
+
+   function toggleCardSelect(event) {
+      let playerCard = event.target;
+
+      // fix image-clicking issue
+      if (playerCard.parentElement.classList.contains('card')) {
+         playerCard = playerCard.parentElement;
+      }
+
+      if (playerCard.classList.contains('selected')) {
+         playerCard.classList.remove('selected');
+         gameData.numCardsSelected--;
+         if (gameData.numCardsSelected === 0) {
+            drawButton.innerHTML = 'Hold';
+         }
+      }
+      else {
+         playerCard.classList.add('selected');
+         if (gameData.numCardsSelected === 0) {
+            drawButton.innerHTML = 'Draw';
+         }
+         gameData.numCardsSelected++;
       }
    }
 
    function replacePlayerCards() {
-      gameData.cardsSelected.forEach(function(selected, i) {
-         if (selected) {
+      const playerCards = playerHand.children;
+      for (let i = 0; i < playerCards.length; i++) {
+         const card = playerCards[i];
+         if (card.classList.contains('selected')) {
             const newVal = Math.floor(Math.random() * 6) + 1;
             gameData.hands.player[i] = newVal;
 
-            const card = playerHand.children[i];
             card.classList.remove('selected');
             card.innerHTML = `${newVal}<img src="images/${gameData.cardIcons[newVal]}">`;
-
-            gameData.cardsSelected[i] = false;
          }
-      });
+      }
    }
 
 })();

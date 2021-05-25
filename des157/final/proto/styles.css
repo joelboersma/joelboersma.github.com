@@ -177,7 +177,7 @@ h2 {
    transition: top 0.2s;
 }
 
-#player .card:hover {
+#player .card.selectable:hover {
    cursor: pointer;
 }
 
