@@ -141,7 +141,10 @@
 
          // Pass button
          document.getElementById('pass').addEventListener('click', function() {
+            cards.innerHTML = '';
+            gameStatus.innerHTML = `<p>${gameData.players[gameData.index]} passed to </p>`;
             gameData.index ? (gameData.index = 0) : (gameData.index = 1);  // change player
+            gameStatus.firstChild.innerHTML += `${gameData.players[gameData.index]}.`;
             changePlayerDisplay();
             setUpTurn();
          });
