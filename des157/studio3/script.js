@@ -16,7 +16,14 @@
    const doneButton = document.querySelector('#popup section button');
 
    // audio
-   const cardDealSound = document.getElementById('cardDeal');
+   const beginSound = new Audio('media/begin.mp3');
+   const cardDealSound = new Audio('media/cardDeal.mp3');
+   const tadaSound = new Audio('media/tada.mp3');
+   const buzzerSound = new Audio('media/fail-buzzer-02.mp3');
+   const tromboneSound = new Audio('media/fail-trombone-03.mp3');
+   beginSound.volume = 0.5;
+   tadaSound.volume = 0.7;
+   buzzerSound.volume = 0.3;
 
    let gameData = {
       dice: ['X.svg', 'Triangle.svg', 'Heart.svg', 'Diamond.svg', 'Club.svg', 'Spade.svg'],
@@ -49,6 +56,8 @@
          location.reload();
       });
 
+      beginSound.play();
+
       setUpTurn();
    });
 
@@ -74,7 +83,6 @@
    }
 
    function throwDice() {
-      cardDealSound.play();
       actionArea.innerHTML = '';
       gameData.roll1 = Math.floor(Math.random() * 6) + 1;
       gameData.roll2 = Math.floor(Math.random() * 6) + 1;
@@ -90,6 +98,8 @@
       gameData.rollSum = gameData.roll1 + gameData.roll2;
 
       if (gameData.rollSum === 2) {
+         // Snake Eyes
+         tromboneSound.play();
          gameData.score[gameData.index] = 0;
          gameData.index ? (gameData.index = 0) : (gameData.index = 1);
          gameStatus.innerHTML = '<p>Oh snap! Snake eyes!</p>';
@@ -99,9 +109,11 @@
          setTimeout(function() {
             changePlayerDisplay();
             setUpTurn();
-         }, 2000);
+         }, 3000);
       }
-      else if (gameData.roll1 === 1 || gameData.roll2 === 1) {
+      else if (gameData.roll1 === 1 || gameData.roll2 === 1) {  
+         // Rolled a 1
+         buzzerSound.play();
          gameData.index ? (gameData.index = 0) : (gameData.index = 1);
          gameStatus.innerHTML = `<p>Sorry, one of your rolls was a one. Switching to ${gameData.players[gameData.index]}</p>`;
 
@@ -111,6 +123,7 @@
          }, 2000);
       }
       else {
+         // Normal Roll
          gameData.score[gameData.index] += gameData.rollSum;
          gameStatus.innerHTML = `<p>You rolled a ${gameData.rollSum}!</p>`;
          actionArea.innerHTML = '<button id="rollAgain">Roll again</button> or <button id="pass">Pass</button>';
@@ -133,6 +146,7 @@
    function checkWinningCondition() {
       showCurrentScore();
       if (gameData.score[gameData.index] >= gameData.gameEnd) {
+         tadaSound.play();
          let pNum = gameData.index == 0 ? 'p1' : 'p2';
          gameControl.innerHTML = `<h2 class="${pNum}">${gameData.players[gameData.index]} Wins!</h2>`;
          gameStatus.innerHTML = `<h3>${gameData.players[gameData.index]} wins with ${gameData.score[gameData.index]} points!</h3>`;
@@ -140,6 +154,9 @@
          document.getElementById('restart').addEventListener('click', function() {
             location.reload();
          });
+      }
+      else {
+         cardDealSound.play();
       }
    }
 
