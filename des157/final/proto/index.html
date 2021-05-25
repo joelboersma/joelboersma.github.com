@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Game of PIG</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Crete+Round&display=swap" rel="stylesheet"> 
+   <link href="styles.css" rel="stylesheet">
+   <script src="script.js" defer></script>
+</head>
+<body>
+   <header hidden>
+      <h1>Game of PIG</h1>
+   </header>
+   
+   <main>
+      <section id="rules" class="backBox">
+         <h2>Game of PIG</h2>
+         <p>The Game of Pig is a two-player game of chance. A random player is chosen to go first.</p>
+         <p>Each turn, a player draws as many pairs of cards as they want, and the combined amount for each card pair gets added to their score. This continues until one of the cards they draw is a 1. When this happens, it is the other player's turn. The player can also choose to end their turn if they feel their luck is running out.</p>
+         <p>If a player draws two 1's, that's a Double Cross! That player's score gets reset to zero.</p>
+         <p>The first player to get 30 points or higher wins! Good luck!</p>
+      </section>
+
+      <div id="gameControl">
+         <button id="startGame">Start the Game</button>
+      </div>
+   
+      <div id="game">
+         <div id="cards"></div>
+         <div id="gameStatus"></div>
+      </div>
+      <div id="actions"></div>
+   </main>
+   
+   <aside class="scoreboard p1 invisible">
+      <div class="name"></div>
+      <div class="points">0</div>
+   </aside>
+   <aside class="scoreboard p2 invisible">
+      <div class="name"></div>
+      <div class="points">0</div>
+   </aside>
+
+   <button id="quit" hidden>Quit</button>
+   <button id="help" hidden>?</button>
+
+   <footer>
+      <nav>
+         <ul>
+            <li>
+               <a href="https://validator.w3.org/check?uri=referer">HTML</a>
+            </li>
+            <li>
+               <a href="https://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+            </li>
+            <li>
+               <a href="sources.html">Sources</a>
+            </li>
+         </ul>
+      </nav>
+   </footer>
+
+   <div id="popup" hidden>
+      <section>
+         <h2>Rules</h2>
+         <p>The Game of Pig is a two-player game of chance. A random player is chosen to go first.</p>
+         <p>Each turn, a player draws as many pairs of cards as they want, and the combined amount for each card pair gets added to their score. This continues until one of the cards they draw is a 1. When this happens, it is the other player's turn. The player can also choose to end their turn if they feel their luck is running out.</p>
+         <p>If a player draws two 1's, that's a Double Cross! That player's score gets reset to zero.</p>
+         <p>The first player to get 30 points or higher wins! Good luck!</p>
+         <button>Done</button>
+      </section>
+   </div>
+</body>
+</html>
