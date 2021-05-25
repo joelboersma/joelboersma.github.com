@@ -3,44 +3,37 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Game of PIG</title>
+   <title>Picture Poker [PROTOTYPE]</title>
    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Crete+Round&display=swap" rel="stylesheet"> 
    <link href="styles.css" rel="stylesheet">
    <script src="script.js" defer></script>
 </head>
 <body>
-   <header hidden>
-      <h1>Game of PIG</h1>
-   </header>
+   <!-- <header hidden>
+      <h1>Picture Poker</h1>
+   </header> -->
    
    <main>
       <section id="rules" class="backBox">
-         <h2>Game of PIG</h2>
-         <p>The Game of Pig is a two-player game of chance. A random player is chosen to go first.</p>
-         <p>Each turn, a player draws as many pairs of cards as they want, and the combined amount for each card pair gets added to their score. This continues until one of the cards they draw is a 1. When this happens, it is the other player's turn. The player can also choose to end their turn if they feel their luck is running out.</p>
-         <p>If a player draws two 1's, that's a Double Cross! That player's score gets reset to zero.</p>
-         <p>The first player to get 30 points or higher wins! Good luck!</p>
-      </section>
-
-      <div id="gameControl">
+         <h2>Picture Poker</h2>
+         <p>This is where the directions for picture poker go.</p>
+         <p>Cat ipsum dolor sit amet, to pet a cat, rub its belly, endure blood and agony, quietly weep, keep rubbing belly, sit and stare sleeps on my head yet hunt by meowing loudly at 5am next to human slave food dispenser. Stare out the window chase laser or cat fur is the new black or swat at dog walk on a keyboard spend six hours per day washing, but still have a crusty butthole.</p> 
+         <p>Steal the warm chair right after you get up sniff other cat's butt and hang jaw half open thereafter. Cat walks in keyboard you have cat to be kitten me right meow climb a tree, wait for a fireman jump to fireman then scratch his face but nyan fluffness ahh cucumber!</p>
          <button id="startGame">Start the Game</button>
-      </div>
+      </section>
    
-      <div id="game">
-         <div id="cards"></div>
-         <div id="gameStatus"></div>
-      </div>
+      <div id="dealer"></div>
+      <div id="player"></div>
+
       <div id="actions"></div>
    </main>
    
-   <aside class="scoreboard p1 invisible">
-      <div class="name"></div>
-      <div class="points">0</div>
+   <aside id="hands" class="backBox" hidden> <!-- remove 'hidden' later -->
+      <h3>Hands</h3>
    </aside>
-   <aside class="scoreboard p2 invisible">
-      <div class="name"></div>
-      <div class="points">0</div>
+   <aside id="bank" class="backBox" hidden> <!-- remove 'hidden' later -->
+      <h3>Bank</h3>
    </aside>
 
    <button id="quit" hidden>Quit</button>
@@ -65,10 +58,9 @@
    <div id="popup" hidden>
       <section>
          <h2>Rules</h2>
-         <p>The Game of Pig is a two-player game of chance. A random player is chosen to go first.</p>
-         <p>Each turn, a player draws as many pairs of cards as they want, and the combined amount for each card pair gets added to their score. This continues until one of the cards they draw is a 1. When this happens, it is the other player's turn. The player can also choose to end their turn if they feel their luck is running out.</p>
-         <p>If a player draws two 1's, that's a Double Cross! That player's score gets reset to zero.</p>
-         <p>The first player to get 30 points or higher wins! Good luck!</p>
+         <p>This is where the directions for picture poker go.</p>
+         <p>Cat ipsum dolor sit amet, to pet a cat, rub its belly, endure blood and agony, quietly weep, keep rubbing belly, sit and stare sleeps on my head yet hunt by meowing loudly at 5am next to human slave food dispenser. Stare out the window chase laser or cat fur is the new black or swat at dog walk on a keyboard spend six hours per day washing, but still have a crusty butthole.</p> 
+         <p>Steal the warm chair right after you get up sniff other cat's butt and hang jaw half open thereafter. Cat walks in keyboard you have cat to be kitten me right meow climb a tree, wait for a fireman jump to fireman then scratch his face but nyan fluffness ahh cucumber!</p>
          <button>Done</button>
       </section>
    </div>
