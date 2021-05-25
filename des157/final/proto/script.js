@@ -98,8 +98,8 @@
          const dealerCardVal = Math.floor(Math.random() * 6) + 1;
          gameData.hands.dealer.push(dealerCardVal);
          const dealerCard = document.createElement('div');
-         dealerCard.className = `card c${i}`;
-         dealerCard.innerHTML = `${gameData.hands.dealer[i]}<img src="images/${gameData.cardIcons[dealerCardVal]}">`;
+         dealerCard.className = `card c${i} faceDown`;
+         dealerCard.innerHTML = `<img src="images/${gameData.cardIcons[0]}">`;
          dealerHand.appendChild(dealerCard);
 
          // Make player card

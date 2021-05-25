@@ -169,6 +169,10 @@ h2 {
 .card.c3 { left: calc((150px + 25px) * 3); }
 .card.c4 { left: calc((150px + 25px) * 4); }
 
+.card.faceDown {
+   background-color: #2FA5DF;
+}
+
 #player .card {
    transition: top 0.2s;
 }
