@@ -225,6 +225,41 @@ h2 {
    font-size: 24px;
 }
 
+nav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   position: absolute;
+   bottom: 0;
+   width: 100vw;
+}
+
+nav ul {
+   display: flex;
+   list-style-type: none;
+   padding: 0;
+   margin: 10px;
+   justify-content: space-evenly;
+}
+
+nav li {
+   padding: 10px;
+   /* font-size: 24px; */
+}
+
+nav li a {
+   padding: 10px;
+   border-radius: 10px;
+   font-size: 18px;
+   color: #111;
+   transition: all 0.5s;
+}
+
+nav li a:hover {
+   background-color: rgba(0, 0, 0, .1);
+}
+
 #popup {
    position: absolute;
    top: 0;
