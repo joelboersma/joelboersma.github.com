@@ -50,6 +50,7 @@ a {
 
 section {
     width: 33%;
+    height: min-content;
     border: 1px solid #dadce0;
     border-radius: 25px;
     margin: 20px;
