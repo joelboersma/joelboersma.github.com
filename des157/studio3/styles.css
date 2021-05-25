@@ -86,6 +86,10 @@ button {
    height: 55px;
 }
 
+button:hover {
+   cursor: pointer;
+}
+
 #startGame {
    font-size: 36px;
    margin-top: 20px;
