@@ -36,8 +36,8 @@
    ];
 
    const players = {
-      PLAYER: 'Player',
-      DEALER: 'Dealer'
+      Player: 'Player',
+      Dealer: 'Dealer'
    }
 
    const handTypes = {
@@ -109,8 +109,13 @@
             }
          }
 
+         // Check for 3oaK
+         if (this.three != 0) {
+            return handTypes.ThreeOfAKind;
+         }
+
          // Check for exactly one pair
-         if (this.length === 1) {
+         if (this.pairs.length === 1) {
             return handTypes.OnePair;
          }
 
@@ -177,6 +182,7 @@
          // TODO: dealer drawing
          showHands();
          const winner = pickWinner();
+         console.log(winner);
          // TODO: Payouts
       });
 
@@ -212,8 +218,6 @@
          // Add click listener to player card for selecting
          playerCard.addEventListener('click', toggleCardSelect);
       }
-
-      console.log(gameData.cards);
    }
 
    function toggleCardSelect(event) {
@@ -271,14 +275,18 @@
       console.log(hands);
 
       if (hands.player.type > hands.dealer.type) {
-         // player wins
+         // Player wins
+         return players.Player;
       }
       else if (hands.player.type < hands.dealer.type) {
-         // dealer wins
+         // Dealer wins
+         return players.Dealer;
       }
       else {
-         // same type
-         // determine based on card values
+         // Same hand type
+         // Determine winner based on card values
+         const handType = hands.player.type;
+         return pickWinnerWithSameHandType(hands, handType);
       }
    }
 })();
