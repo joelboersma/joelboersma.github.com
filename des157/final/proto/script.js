@@ -264,8 +264,8 @@
    // FOR TESTING ONLY: Replace all cards with specified values
    function replaceAllCards() {
       // Set new card values
-      gameData.cards.dealer = [2, 2, 5, 5, 3];
-      gameData.cards.player = [5, 5, 2, 2, 4];
+      gameData.cards.dealer = [1, 2, 3, 4, 6];
+      gameData.cards.player = [1, 2, 3, 4, 5];
 
       // Redo player's cards
       const playerCards = playerHand.children;
@@ -393,7 +393,11 @@
             else {
                return "Whoever has the highest singleton";
             }
+
+         default: return "Whoever has the highest singleton";
          }
+
+         
       }
    }
 
