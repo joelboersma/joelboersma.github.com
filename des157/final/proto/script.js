@@ -66,24 +66,26 @@
    function setUpRound() {
       dealCards();
 
-      // set up player actions
+      // Set up player actions
       actionArea.removeAttribute('hidden');
+      // TODO: Betting Buttons
 
-      // player actions
-      // drawing
+      // Player Drawing
       drawButton.addEventListener('click', function() {
-         actionArea.toggleAttribute('hidden');
-         
+         // Make all player cards unselectable
          for (const card of playerHand.children) {
             card.classList.remove('selectable');
             card.removeEventListener('click', toggleCardSelect);
          }
 
+         actionArea.toggleAttribute('hidden');
+
          replacePlayerCards();
-         // dealer drawing
-         // show hands
+
+         // TODO: dealer drawing
+         showHands();
          // determine winner
-         // payouts [later]
+         // TODO: Payouts
       });
 
       // TODO: Betting Button Event Listeners
@@ -112,12 +114,14 @@
          gameData.hands.player.push(playerCardVal);
          const playerCard = document.createElement('div');
          playerCard.className = `card c${i} selectable`;
-         playerCard.innerHTML = `${gameData.hands.player[i]}<img src="images/${gameData.cardIcons[playerCardVal]}">`;
+         playerCard.innerHTML = `${playerCardVal}<img src="images/${gameData.cardIcons[playerCardVal]}">`;
          playerHand.appendChild(playerCard);
 
          // Add click listener to player card for selecting
          playerCard.addEventListener('click', toggleCardSelect);
       }
+
+      console.log(gameData.hands);
    }
 
    function toggleCardSelect(event) {
@@ -155,6 +159,15 @@
             card.classList.remove('selected');
             card.innerHTML = `${newVal}<img src="images/${gameData.cardIcons[newVal]}">`;
          }
+      }
+   }
+
+   function showHands() {
+      for (let i = 0; i < 5; i++) {
+         const dealerCard = dealerHand.children[i];
+         const dealerCardVal = gameData.hands.dealer[i];
+         dealerCard.classList.remove('faceDown');
+         dealerCard.innerHTML = `${dealerCardVal}<img src="images/${gameData.cardIcons[dealerCardVal]}">`
       }
    }
 
