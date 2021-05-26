@@ -73,43 +73,44 @@
 
       // Determine Type AND populate other Hand properties
       determineType(counts) {
-         const thisHand = this;
-         counts.forEach(function (count, i) {
+         for (let i = 0; i < 6; i++) {
+            const count = counts[i];
             const cardVal = i + 1;
+
             switch (count) {
             case 5:
                // Five of a Kind; we're done
-               thisHand.five = cardVal;
+               this.five = cardVal;
                return handTypes.FiveOfAKind;
             case 4:
                // Four of a Kind; we're done
-               thisHand.four = cardVal;
+               this.four = cardVal;
                return handTypes.FourOfAKind;
             case 3:
                // Three of a Kind (could still find a pair)
-               thisHand.three = cardVal;
-               if (thisHand.pairs.length === 1) {
+               this.three = cardVal;
+               if (this.pairs.length === 1) {
                   // Full House; we're done
                   return handTypes.FullHouse;
                }
                break;
             case 2:
                // Pair (still could find another pair or 3oaK)
-               thisHand.pairs.push(cardVal);
-               if (thisHand.pairs.length === 2) {
+               this.pairs.push(cardVal);
+               if (this.pairs.length === 2) {
                   // Two Pair; we're done
                   return handTypes.TwoPair;
                }
-               else if (thisHand.three != 0) {
+               else if (this.three != 0) {
                   // Full House; we're done
                   return handTypes.FullHouse;
                }
                break;
             }
-         });
+         }
 
          // Check for exactly one pair
-         if (thisHand.length === 1) {
+         if (this.length === 1) {
             return handTypes.OnePair;
          }
 
