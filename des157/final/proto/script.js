@@ -25,12 +25,101 @@
    tadaSound.volume = 0.7;
    buzzerSound.volume = 0.3;
 
-   const cardIcons = ['Star.svg', 'Circle.svg', 'Triangle.svg', 'Heart.svg', 'Diamond.svg', 'Club.svg', 'Spade.svg']
+   const cardIcons = [
+      'Star.svg',
+      'Circle.svg',
+      'Triangle.svg',
+      'Heart.svg',
+      'Diamond.svg',
+      'Club.svg',
+      'Spade.svg'
+   ];
+
+   const players = {
+      PLAYER: 'Player',
+      DEALER: 'Dealer'
+   }
+
+   const handTypes = {
+      FiveOfAKind: 6,
+      FourOfAKind: 5,
+      FullHouse: 4,
+      ThreeOfAKind: 3,
+      TwoPair: 2,
+      OnePair: 1,
+      None: 0
+   }
+
+   class Hand {
+      constructor(cards) {
+         this.cards = cards;
+         this.counts = this.countCards();
+         this.pairs = [];
+         this.three = 0;
+         this.four = 0;
+         this.five = 0;
+         this.type = this.determineType(this.counts);
+      }
+
+      // Count the number of cards for each value
+      // Returns array of size 6
+      countCards() {
+         let counts = Array(6).fill(0);
+         for (const card of this.cards) {
+            counts[card - 1]++;
+         }
+         return counts;
+      }
+
+      // Determine Type AND populate other Hand properties
+      determineType(counts) {
+         const thisHand = this;
+         counts.forEach(function (count, i) {
+            const cardVal = i + 1;
+            switch (count) {
+            case 5:
+               // Five of a Kind; we're done
+               thisHand.five = cardVal;
+               return handTypes.FiveOfAKind;
+            case 4:
+               // Four of a Kind; we're done
+               thisHand.four = cardVal;
+               return handTypes.FourOfAKind;
+            case 3:
+               // Three of a Kind (could still find a pair)
+               thisHand.three = cardVal;
+               if (thisHand.pairs.length === 1) {
+                  // Full House; we're done
+                  return handTypes.FullHouse;
+               }
+               break;
+            case 2:
+               // Pair (still could find another pair or 3oaK)
+               thisHand.pairs.push(cardVal);
+               if (thisHand.pairs.length === 2) {
+                  // Two Pair; we're done
+                  return handTypes.TwoPair;
+               }
+               else if (thisHand.three != 0) {
+                  // Full House; we're done
+                  return handTypes.FullHouse;
+               }
+               break;
+            }
+         });
+
+         // Check for exactly one pair
+         if (thisHand.length === 1) {
+            return handTypes.OnePair;
+         }
+
+         return handTypes.None;
+      }
+   }
 
    let gameData = {
       // 0 for face-down, 1-6 for face-up
-      
-      hands: {
+      cards: {
          player: [],
          dealer: []
       },
@@ -86,7 +175,7 @@
 
          // TODO: dealer drawing
          showHands();
-         // determine winner
+         const winner = pickWinner();
          // TODO: Payouts
       });
 
@@ -95,7 +184,7 @@
 
    function dealCards() {
       // TODO: move these to a reset() function
-      gameData.hands.player.splice(0);
+      gameData.cards.player.splice(0);
       gameData.cardsSelected = Array(5).fill(false);
       gameData.numCardsSelected = 0;
       playerHand.innerHTML = ''
@@ -105,7 +194,7 @@
       for (let i = 0; i < 5; i++) {
          // Make dealer card
          const dealerCardVal = Math.floor(Math.random() * 6) + 1;
-         gameData.hands.dealer.push(dealerCardVal);
+         gameData.cards.dealer.push(dealerCardVal);
          const dealerCard = document.createElement('div');
          dealerCard.className = `card c${i} faceDown`;
          dealerCard.innerHTML = `<img src="images/${cardIcons[0]}">`;
@@ -113,7 +202,7 @@
 
          // Make player card
          const playerCardVal = Math.floor(Math.random() * 6) + 1;
-         gameData.hands.player.push(playerCardVal);
+         gameData.cards.player.push(playerCardVal);
          const playerCard = document.createElement('div');
          playerCard.className = `card c${i} selectable`;
          playerCard.innerHTML = `${playerCardVal}<img src="images/${cardIcons[playerCardVal]}">`;
@@ -123,7 +212,7 @@
          playerCard.addEventListener('click', toggleCardSelect);
       }
 
-      console.log(gameData.hands);
+      console.log(gameData.cards);
    }
 
    function toggleCardSelect(event) {
@@ -156,7 +245,7 @@
          const card = playerCards[i];
          if (card.classList.contains('selected')) {
             const newVal = Math.floor(Math.random() * 6) + 1;
-            gameData.hands.player[i] = newVal;
+            gameData.cards.player[i] = newVal;
 
             card.classList.remove('selected');
             card.innerHTML = `${newVal}<img src="images/${cardIcons[newVal]}">`;
@@ -167,10 +256,28 @@
    function showHands() {
       for (let i = 0; i < 5; i++) {
          const dealerCard = dealerHand.children[i];
-         const dealerCardVal = gameData.hands.dealer[i];
+         const dealerCardVal = gameData.cards.dealer[i];
          dealerCard.classList.remove('faceDown');
          dealerCard.innerHTML = `${dealerCardVal}<img src="images/${cardIcons[dealerCardVal]}">`
       }
    }
 
+   function pickWinner() {
+      const hands = {
+         player: new Hand(gameData.cards.player),
+         dealer: new Hand(gameData.cards.dealer)
+      }
+      console.log(hands);
+
+      if (hands.player.type > hands.dealer.type) {
+         // player wins
+      }
+      else if (hands.player.type < hands.dealer.type) {
+         // dealer wins
+      }
+      else {
+         // same type
+         // determine based on card values
+      }
+   }
 })();
