@@ -179,6 +179,9 @@
 
          replacePlayerCards();
 
+         // FOR TESTING ONLY
+         replaceAllCards();
+
          // TODO: dealer drawing
          showHands();
          const winner = pickWinner();
@@ -255,6 +258,22 @@
             card.classList.remove('selected');
             card.innerHTML = `${newVal}<img src="images/${cardIcons[newVal]}">`;
          }
+      }
+   }
+
+
+   // FOR TESTING ONLY: Replace all cards with specified values
+   function replaceAllCards() {
+      // Set new card values
+      gameData.cards.dealer = [4, 4, 4, 4, 4];
+      gameData.cards.player = [5, 5, 5, 5, 5];
+
+      // Redo player's cards
+      const playerCards = playerHand.children;
+      for (let i = 0; i < playerCards.length; i++) {
+         const card = playerCards[i];
+         const newVal = gameData.cards.player[i];
+         card.innerHTML = `${newVal}<img src="images/${cardIcons[newVal]}">`;
       }
    }
 
