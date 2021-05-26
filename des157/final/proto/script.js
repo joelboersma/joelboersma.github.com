@@ -25,9 +25,11 @@
    tadaSound.volume = 0.7;
    buzzerSound.volume = 0.3;
 
+   const cardIcons = ['Star.svg', 'Circle.svg', 'Triangle.svg', 'Heart.svg', 'Diamond.svg', 'Club.svg', 'Spade.svg']
+
    let gameData = {
       // 0 for face-down, 1-6 for face-up
-      cardIcons: ['Star.svg', 'Circle.svg', 'Triangle.svg', 'Heart.svg', 'Diamond.svg', 'Club.svg', 'Spade.svg'],
+      
       hands: {
          player: [],
          dealer: []
@@ -106,7 +108,7 @@
          gameData.hands.dealer.push(dealerCardVal);
          const dealerCard = document.createElement('div');
          dealerCard.className = `card c${i} faceDown`;
-         dealerCard.innerHTML = `<img src="images/${gameData.cardIcons[0]}">`;
+         dealerCard.innerHTML = `<img src="images/${cardIcons[0]}">`;
          dealerHand.appendChild(dealerCard);
 
          // Make player card
@@ -114,7 +116,7 @@
          gameData.hands.player.push(playerCardVal);
          const playerCard = document.createElement('div');
          playerCard.className = `card c${i} selectable`;
-         playerCard.innerHTML = `${playerCardVal}<img src="images/${gameData.cardIcons[playerCardVal]}">`;
+         playerCard.innerHTML = `${playerCardVal}<img src="images/${cardIcons[playerCardVal]}">`;
          playerHand.appendChild(playerCard);
 
          // Add click listener to player card for selecting
@@ -157,7 +159,7 @@
             gameData.hands.player[i] = newVal;
 
             card.classList.remove('selected');
-            card.innerHTML = `${newVal}<img src="images/${gameData.cardIcons[newVal]}">`;
+            card.innerHTML = `${newVal}<img src="images/${cardIcons[newVal]}">`;
          }
       }
    }
@@ -167,7 +169,7 @@
          const dealerCard = dealerHand.children[i];
          const dealerCardVal = gameData.hands.dealer[i];
          dealerCard.classList.remove('faceDown');
-         dealerCard.innerHTML = `${dealerCardVal}<img src="images/${gameData.cardIcons[dealerCardVal]}">`
+         dealerCard.innerHTML = `${dealerCardVal}<img src="images/${cardIcons[dealerCardVal]}">`
       }
    }
 
