@@ -284,9 +284,100 @@
       }
       else {
          // Same hand type
-         // Determine winner based on card values
          const handType = hands.player.type;
-         return pickWinnerWithSameHandType(hands, handType);
+
+         // Determine winner based on card values
+         // return pickWinnerWithSameHandType(hands, handType);
+
+
+         switch (handType) {
+         case handTypes.FiveOfAKind:
+            if (hands.player.five > hands.dealer.five) {
+               return players.Player;
+            }
+            else if (hands.player.five < hands.dealer.five) {
+               return players.Dealer;
+            }
+            else {
+               return "Tie";
+            }
+
+         case handTypes.FourOfAKind:
+            if (hands.player.four > hands.dealer.four) {
+               return players.Player;
+            }
+            else if (hands.player.four < hands.dealer.four) {
+               return players.Dealer;
+            }
+            else {
+               // find max singleton
+               return "Whoever has the highest singleton";
+            }
+
+         case handTypes.FullHouse:
+            if (hands.player.three > hands.dealer.three) {
+               return players.Player;
+            }
+            else if (hands.player.three < hands.dealer.three) {
+               return players.Dealer;
+            }
+            else {
+               if (hands.player.pairs[0] > hands.dealer.pairs[0]) {
+                  return players.Player;
+               }
+               else if (hands.player.pairs[0] < hands.dealer.pairs[0]) {
+                  return players.Dealer;
+               }
+               else {
+                  // find max singleton
+                  return "Whoever has the highest singleton";
+               }
+            }
+
+         case handTypes.ThreeOfAKind:
+            if (hands.player.three > hands.dealer.three) {
+               return players.Player;
+            }
+            else if (hands.player.three < hands.dealer.three) {
+               return players.Dealer;
+            }
+            else {
+               // find max singleton
+               return "Whoever has the highest singleton";
+            }
+
+         case handTypes.TwoPair:
+            if (Math.max(...hands.player.pairs) > Math.max(...hands.dealer.pairs)) {
+               return players.Player;
+            }
+            else if (Math.max(...hands.player.pairs) < Math.max(...hands.dealer.pairs)) {
+               return players.Dealer;
+            }
+            else {
+               if (Math.min(...hands.player.pairs) > Math.min(...hands.dealer.pairs)) {
+                  return players.Player;
+               }
+               else if (Math.min(...hands.player.pairs) < Math.min(...hands.dealer.pairs)) {
+                  return players.Dealer;
+               }
+               else {
+                  // find max singleton
+                  return "Whoever has the highest singleton";
+               }
+            }
+
+         case handTypes.OnePair:
+            if (hands.player.pairs[0] > hands.dealer.pairs[0]) {
+               return players.Player;
+            }
+            else if (hands.player.pairs[0] < hands.dealer.pairs[0]) {
+               return players.Dealer;
+            }
+            else {
+               return "Whoever has the highest singleton";
+            }
+         }
       }
    }
+
 })();
