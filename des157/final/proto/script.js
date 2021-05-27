@@ -54,11 +54,16 @@
       constructor(cards) {
          this.cards = cards;
          this.counts = this.countCards();
+         
+         this.singles = [];
          this.pairs = [];
          this.three = 0;
          this.four = 0;
          this.five = 0;
-         this.type = this.determineType(this.counts);
+
+         this.calcGroupings();
+
+         this.type = this.determineType();
       }
 
       // Count the number of cards for each value
@@ -71,55 +76,44 @@
          return counts;
       }
 
-      // Determine Type AND populate other Hand properties
-      determineType(counts) {
-         for (let i = 0; i < 6; i++) {
-            const count = counts[i];
+      // Calculate the groupings (singles, pairs, etc.)
+      calcGroupings() {
+         for (let i = 5; i >= 0; i--) {
+            const count = this.counts[i];
             const cardVal = i + 1;
 
             switch (count) {
             case 5:
-               // Five of a Kind; we're done
                this.five = cardVal;
-               return handTypes.FiveOfAKind;
+               break;
             case 4:
-               // Four of a Kind; we're done
                this.four = cardVal;
-               return handTypes.FourOfAKind;
+               break;
             case 3:
-               // Three of a Kind (could still find a pair)
                this.three = cardVal;
-               if (this.pairs.length === 1) {
-                  // Full House; we're done
-                  return handTypes.FullHouse;
-               }
                break;
             case 2:
-               // Pair (still could find another pair or 3oaK)
                this.pairs.push(cardVal);
-               if (this.pairs.length === 2) {
-                  // Two Pair; we're done
-                  return handTypes.TwoPair;
-               }
-               else if (this.three != 0) {
-                  // Full House; we're done
-                  return handTypes.FullHouse;
-               }
+               break;
+            case 1:
+               this.singles.push(cardVal);
                break;
             }
+            
          }
+      }
 
-         // Check for 3oaK
-         if (this.three != 0) {
-            return handTypes.ThreeOfAKind;
+      // Determine hand type
+      determineType() {
+         if (this.five != 0)                return handTypes.FiveOfAKind;
+         else if (this.four != 0)           return handTypes.FourOfAKind;
+         else if (this.three != 0) {
+            if (this.pairs.length != 0)     return handTypes.FullHouse;
+            else                            return handTypes.ThreeOfAKind;
          }
-
-         // Check for exactly one pair
-         if (this.pairs.length === 1) {
-            return handTypes.OnePair;
-         }
-
-         return handTypes.None;
+         else if (this.pairs.length === 2)  return handTypes.TwoPair;
+         else if (this.pairs.length === 1)  return handTypes.OnePair;
+         else                               return handTypes.None;
       }
    }
 
@@ -180,7 +174,7 @@
          replacePlayerCards();
 
          // FOR TESTING ONLY
-         replaceAllCards();
+         // replaceAllCards();
 
          // TODO: dealer drawing
          showHands();
@@ -264,8 +258,8 @@
    // FOR TESTING ONLY: Replace all cards with specified values
    function replaceAllCards() {
       // Set new card values
-      gameData.cards.dealer = [1, 2, 3, 4, 6];
-      gameData.cards.player = [1, 2, 3, 4, 5];
+      gameData.cards.dealer = [1, 2, 3, 4, 5];
+      gameData.cards.player = [1, 2, 3, 4, 6];
 
       // Redo player's cards
       const playerCards = playerHand.children;
@@ -290,7 +284,7 @@
          player: new Hand(gameData.cards.player),
          dealer: new Hand(gameData.cards.dealer)
       }
-      // console.log(hands);
+      console.log(hands);
 
       if (hands.player.type > hands.dealer.type) {
          // Player wins
