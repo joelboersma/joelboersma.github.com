@@ -150,6 +150,7 @@
       quitButton.removeAttribute('hidden');
       helpButton.removeAttribute('hidden');
       rules.toggleAttribute('hidden');
+      startButton.toggleAttribute('hidden');
       footer.toggleAttribute('hidden');
 
       // Reload when pushing quit button
