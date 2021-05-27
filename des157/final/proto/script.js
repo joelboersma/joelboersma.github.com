@@ -210,7 +210,7 @@
       gameData.numCardsSelected = 0;
       playerHand.innerHTML = '';
       dealerHand.innerHTML = '';
-      gameStatus.toggleAttribute('hidden');
+      gameStatus.innerHTML = '';
 
       setUpRound();
    }
@@ -293,7 +293,6 @@
       gameStatus.innerHTML = `<h2>${winnerString}</h2>`;
       gameStatus.innerHTML += `<button id="reset">Play Again</button>`;
       document.getElementById('reset').addEventListener('click', reset);
-      gameStatus.removeAttribute('hidden');
    }
 
 
