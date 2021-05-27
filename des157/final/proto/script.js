@@ -166,8 +166,6 @@
          popup.toggleAttribute('hidden');
       });
 
-      beginSound.play();
-
       setUpRound();
    }
 
@@ -176,6 +174,7 @@
 
    // Set up the round
    function setUpRound() {
+      beginSound.play();
       dealCards();
 
       // Set up player actions
@@ -243,6 +242,8 @@
    }
 
    function toggleCardSelect(event) {
+      cardDealSound.play();
+
       let playerCard = event.target;
 
       // fix image-clicking issue
@@ -293,6 +294,12 @@
       gameStatus.innerHTML = `<h2>${winnerString}</h2>`;
       gameStatus.innerHTML += `<button id="reset">Play Again</button>`;
       document.getElementById('reset').addEventListener('click', reset);
+
+      switch(winnerString) {
+      case outcomes.Player: tadaSound.play(); break;
+      case outcomes.Dealer: tromboneSound.play(); break;
+      default: // TODO: Find sound for tie
+      }
    }
 
 
