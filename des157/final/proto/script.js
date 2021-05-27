@@ -1,6 +1,8 @@
 (function(){
    'use strict';
 
+   /// === INIT ===
+
    // Elements
    const header = document.querySelector('header');
    const footer = document.querySelector('footer');
@@ -26,6 +28,7 @@
    tadaSound.volume = 0.7;
    buzzerSound.volume = 0.3;
 
+   // Card Icons
    const cardIcons = [
       'Star.svg',
       'Circle.svg',
@@ -35,6 +38,9 @@
       'Club.svg',
       'Spade.svg'
    ];
+
+
+   /// === ENUMS ===
 
    const outcomes = {
       Player: 'You Win!',
@@ -51,6 +57,9 @@
       OnePair: 1,
       None: 0
    }
+
+
+   /// === HAND CLASS ===
 
    class Hand {
       constructor(cards) {
@@ -130,8 +139,14 @@
       betAmount: 5
    };
 
-   startButton.addEventListener('click', function() {
-      // header.removeAttribute('hidden');
+
+   // === START/DONE BUTTON ===
+
+   startButton.addEventListener('click', startGame);
+
+   function startGame() {
+      startButton.removeEventListener(startGame);
+
       quitButton.removeAttribute('hidden');
       helpButton.removeAttribute('hidden');
       rules.toggleAttribute('hidden');
@@ -153,7 +168,10 @@
       beginSound.play();
 
       setUpRound();
-   });
+   }
+
+
+   /// === MAIN GAMEPLAY LOOP ===
 
    // Set up the round
    function setUpRound() {
@@ -162,40 +180,44 @@
       // Set up player actions
       actionArea.removeAttribute('hidden');
       // TODO: Betting Buttons
-
-      // Player Drawing
-      drawButton.addEventListener('click', function() {
-         // Make all player cards unselectable
-         for (const card of playerHand.children) {
-            card.classList.remove('selectable');
-            card.removeEventListener('click', toggleCardSelect);
-         }
-
-         actionArea.toggleAttribute('hidden');
-
-         replacePlayerCards();
-
-         // FOR TESTING ONLY
-         // replaceAllCards();
-
-         // TODO: dealer drawing
-         showHands();
-         const winner = pickWinner();
-         displayWinner(winner);
-         // TODO: Payouts
-      });
-
       // TODO: Betting Button Event Listeners
    }
 
-   function dealCards() {
-      // TODO: move these to a reset() function
+   // When player pushes draw button
+   drawButton.addEventListener('click', drawButtonPush);
+   function drawButtonPush() {
+      // Make all player cards unselectable
+      for (const card of playerHand.children) {
+         card.classList.remove('selectable');
+         card.removeEventListener('click', toggleCardSelect);
+      }
+      actionArea.toggleAttribute('hidden');
+
+      replacePlayerCards();
+      // replaceAllCards(); // FOR TESTING ONLY
+      // TODO: dealer drawing
+      showHands();
+      const winner = pickWinner();
+      displayWinner(winner);
+      // TODO: Payouts
+   }
+
+   // When player pushes "Play Again" button
+   function reset() {
       gameData.cards.player.splice(0);
       gameData.cardsSelected = Array(5).fill(false);
       gameData.numCardsSelected = 0;
-      playerHand.innerHTML = ''
-      dealerHand.innerHTML = ''
+      playerHand.innerHTML = '';
+      dealerHand.innerHTML = '';
+      gameStatus.toggleAttribute('hidden');
 
+      setUpRound();
+   }
+
+
+   // === GAME HELPERS ===
+
+   function dealCards() {
       // Randomly determine and construct cards
       for (let i = 0; i < 5; i++) {
          // Make dealer card
@@ -267,8 +289,9 @@
    }
 
    function displayWinner(winnerString) {
-      console.log(winnerString);
       gameStatus.innerHTML = `<h2>${winnerString}</h2>`;
+      gameStatus.innerHTML += `<button id="reset">Play Again</button>`;
+      document.getElementById('reset').addEventListener('click', reset);
       gameStatus.removeAttribute('hidden');
    }
 
@@ -407,8 +430,10 @@
       return "Tie";
    }
 
+   
+   /// === TESTING ONLY ===
 
-   // FOR TESTING ONLY: Replace all cards with specified values
+   // Replace all cards with specified values
    function replaceAllCards() {
       // Set new card values
       gameData.cards.dealer = [1, 2, 3, 4, 5];
