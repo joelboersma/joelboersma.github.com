@@ -206,7 +206,7 @@
    // When player pushes "Play Again" button
    function reset() {
       gameData.cards.player.splice(0);
-      gameData.cardsSelected = Array(5).fill(false);
+      gameData.cards.dealer.splice(0);
       gameData.numCardsSelected = 0;
       playerHand.innerHTML = '';
       dealerHand.innerHTML = '';
