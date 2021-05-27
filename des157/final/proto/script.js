@@ -196,8 +196,16 @@
       replacePlayerCards();
       // replaceAllCards(); // FOR TESTING ONLY
       // TODO: dealer drawing
-      showHands();
-      const winner = pickWinner();
+
+      // Generate Hand objects
+      const hands = {
+         player: new Hand(gameData.cards.player),
+         dealer: new Hand(gameData.cards.dealer)
+      }
+      console.log(hands);
+      
+      showHands(hands);
+      const winner = pickWinner(hands);
       displayWinner(winner);
       // TODO: Payouts
    }
@@ -282,10 +290,10 @@
       }
    }
 
-   function showHands() {
+   function showHands(hands) {
       for (let i = 0; i < 5; i++) {
          const dealerCard = dealerHand.children[i];
-         const dealerCardVal = gameData.cards.dealer[i];
+         const dealerCardVal = hands.dealer.cards[i];
          dealerCard.classList.remove('faceDown');
          dealerCard.innerHTML = `${dealerCardVal}<img src="images/${cardIcons[dealerCardVal]}">`
       }
@@ -306,13 +314,7 @@
 
    // === WINNER CALCULATION FUNCTIONS ===
 
-   function pickWinner() {
-      const hands = {
-         player: new Hand(gameData.cards.player),
-         dealer: new Hand(gameData.cards.dealer)
-      }
-      console.log(hands);
-
+   function pickWinner(hands) {
       if (hands.player.type > hands.dealer.type) {
          // Player wins
          return outcomes.Player;
