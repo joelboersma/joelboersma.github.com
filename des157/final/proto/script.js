@@ -338,7 +338,7 @@
                return outcomes.Dealer;
             }
             else {
-               return "Tie";
+               return outcomes.Tie;
             }
 
          case handTypes.FourOfAKind:
@@ -367,7 +367,7 @@
                   return outcomes.Dealer;
                }
                else {
-                  return "Tie";
+                  return outcomes.Tie;
                }
             }
 
@@ -435,7 +435,7 @@
          }
       }
 
-      return "Tie";
+      return outcomes.Tie;
    }
 
    
