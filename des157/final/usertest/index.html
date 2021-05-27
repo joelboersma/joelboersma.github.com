@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Picture Poker [PROTOTYPE]</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Crete+Round&display=swap" rel="stylesheet"> 
+   <link href="styles.css" rel="stylesheet">
+   <script src="script.js" defer></script>
+</head>
+<body>
+   <main>
+      <section id="rules" class="backBox">
+         <h1>Picture Poker</h1>
+         <p>This is where the directions for picture poker go.</p>
+         <p>Cat ipsum dolor sit amet, to pet a cat, rub its belly, endure blood and agony, quietly weep, keep rubbing belly, sit and stare sleeps on my head yet hunt by meowing loudly at 5am next to human slave food dispenser. Stare out the window chase laser or cat fur is the new black or swat at dog walk on a keyboard spend six hours per day washing, but still have a crusty butthole.</p> 
+         <p>Steal the warm chair right after you get up sniff other cat's butt and hang jaw half open thereafter. Cat walks in keyboard you have cat to be kitten me right meow climb a tree, wait for a fireman jump to fireman then scratch his face but nyan fluffness ahh cucumber!</p>
+      </section>
+      <button id="startGame">Start the Game</button>
+   
+      <div id="dealer" hidden></div>
+      <div id="player" hidden></div>
+
+      <div id="actions" hidden>
+         <button id="draw">Hold</button>
+         <div id="bets" hidden>
+            <div id="betButtons">
+               <button id="betUp"></button>
+               <button id="betDown"></button>
+            </div>
+            <div id="betStatus">
+               <h4>Bet</h4>
+               <div id="betAmount">
+                  <!-- <img src="images/Gem.svg"> x 5 -->
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div id="gameStatus"></div>
+   </main>
+   
+   <aside id="hands" class="backBox" hidden> <!-- remove 'hidden' later -->
+      <h3>Hands</h3>
+   </aside>
+   <aside id="bank" class="backBox" hidden> <!-- remove 'hidden' later -->
+      <h3>Bank</h3>
+   </aside>
+
+   <button id="quit" hidden>Quit</button>
+   <button id="help" hidden>?</button>
+
+   <footer>
+      <nav>
+         <ul>
+            <li>
+               <a href="https://validator.w3.org/check?uri=referer">HTML</a>
+            </li>
+            <li>
+               <a href="https://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+            </li>
+            <li>
+               <a href="sources.html">Sources</a>
+            </li>
+         </ul>
+      </nav>
+   </footer>
+
+   <div id="popup" hidden>
+      <section>
+         <h2>Rules</h2>
+         <p>This is where the directions for picture poker go.</p>
+         <p>Cat ipsum dolor sit amet, to pet a cat, rub its belly, endure blood and agony, quietly weep, keep rubbing belly, sit and stare sleeps on my head yet hunt by meowing loudly at 5am next to human slave food dispenser. Stare out the window chase laser or cat fur is the new black or swat at dog walk on a keyboard spend six hours per day washing, but still have a crusty butthole.</p> 
+         <p>Steal the warm chair right after you get up sniff other cat's butt and hang jaw half open thereafter. Cat walks in keyboard you have cat to be kitten me right meow climb a tree, wait for a fireman jump to fireman then scratch his face but nyan fluffness ahh cucumber!</p>
+         <button>Done</button>
+      </section>
+   </div>
+</body>
+</html>
