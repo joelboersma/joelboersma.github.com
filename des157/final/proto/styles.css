@@ -8,14 +8,6 @@ body {
    color: white;
 }
 
-.p1 {
-   color: #EE0000;
-}
-
-.p2 {
-   color: #00AAFF;
-}
-
 .invisible {
    opacity: 0;
 }
@@ -52,11 +44,6 @@ h1 {
    padding: 20px;
    line-height: 1.5;
    z-index: 1;
-   /* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
-}
-
-h1 {
-   
 }
 
 main {
@@ -274,7 +261,6 @@ nav ul {
 
 nav li {
    padding: 10px;
-   /* font-size: 24px; */
 }
 
 nav li a {
