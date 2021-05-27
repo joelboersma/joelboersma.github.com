@@ -35,9 +35,10 @@
       'Spade.svg'
    ];
 
-   const players = {
-      Player: 'Player',
-      Dealer: 'Dealer'
+   const outcomes = {
+      Player: 'You Win!',
+      Dealer: 'Too Bad',
+      Tie: 'Wow, a Tie!'
    }
 
    const handTypes = {
@@ -288,11 +289,11 @@
 
       if (hands.player.type > hands.dealer.type) {
          // Player wins
-         return players.Player;
+         return outcomes.Player;
       }
       else if (hands.player.type < hands.dealer.type) {
          // Dealer wins
-         return players.Dealer;
+         return outcomes.Dealer;
       }
       else {
          // Same hand type
@@ -305,10 +306,10 @@
          switch (handType) {
          case handTypes.FiveOfAKind:
             if (hands.player.five > hands.dealer.five) {
-               return players.Player;
+               return outcomes.Player;
             }
             else if (hands.player.five < hands.dealer.five) {
-               return players.Dealer;
+               return outcomes.Dealer;
             }
             else {
                return "Tie";
@@ -316,10 +317,10 @@
 
          case handTypes.FourOfAKind:
             if (hands.player.four > hands.dealer.four) {
-               return players.Player;
+               return outcomes.Player;
             }
             else if (hands.player.four < hands.dealer.four) {
-               return players.Dealer;
+               return outcomes.Dealer;
             }
             else {
                return compareSingles(hands);
@@ -327,17 +328,17 @@
 
          case handTypes.FullHouse:
             if (hands.player.three > hands.dealer.three) {
-               return players.Player;
+               return outcomes.Player;
             }
             else if (hands.player.three < hands.dealer.three) {
-               return players.Dealer;
+               return outcomes.Dealer;
             }
             else {
                if (hands.player.pairs[0] > hands.dealer.pairs[0]) {
-                  return players.Player;
+                  return outcomes.Player;
                }
                else if (hands.player.pairs[0] < hands.dealer.pairs[0]) {
-                  return players.Dealer;
+                  return outcomes.Dealer;
                }
                else {
                   return "Tie";
@@ -346,10 +347,10 @@
 
          case handTypes.ThreeOfAKind:
             if (hands.player.three > hands.dealer.three) {
-               return players.Player;
+               return outcomes.Player;
             }
             else if (hands.player.three < hands.dealer.three) {
-               return players.Dealer;
+               return outcomes.Dealer;
             }
             else {
                return compareSingles(hands);
@@ -357,17 +358,17 @@
 
          case handTypes.TwoPair:
             if (Math.max(...hands.player.pairs) > Math.max(...hands.dealer.pairs)) {
-               return players.Player;
+               return outcomes.Player;
             }
             else if (Math.max(...hands.player.pairs) < Math.max(...hands.dealer.pairs)) {
-               return players.Dealer;
+               return outcomes.Dealer;
             }
             else {
                if (Math.min(...hands.player.pairs) > Math.min(...hands.dealer.pairs)) {
-                  return players.Player;
+                  return outcomes.Player;
                }
                else if (Math.min(...hands.player.pairs) < Math.min(...hands.dealer.pairs)) {
-                  return players.Dealer;
+                  return outcomes.Dealer;
                }
                else {
                   return compareSingles(hands);
@@ -376,10 +377,10 @@
 
          case handTypes.OnePair:
             if (hands.player.pairs[0] > hands.dealer.pairs[0]) {
-               return players.Player;
+               return outcomes.Player;
             }
             else if (hands.player.pairs[0] < hands.dealer.pairs[0]) {
-               return players.Dealer;
+               return outcomes.Dealer;
             }
             else {
                return compareSingles(hands);
@@ -401,10 +402,10 @@
 
       for (let i = 0; i < numSingles; i++) {
          if (playerSingles[i] > dealerSingles[i]) {
-            return players.Player;
+            return outcomes.Player;
          }
          else if (playerSingles[i] < dealerSingles[i]) {
-            return players.Dealer;
+            return outcomes.Dealer;
          }
       }
 
