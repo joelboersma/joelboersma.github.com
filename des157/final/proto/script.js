@@ -290,7 +290,7 @@
          player: new Hand(gameData.cards.player),
          dealer: new Hand(gameData.cards.dealer)
       }
-      console.log(hands);
+      // console.log(hands);
 
       if (hands.player.type > hands.dealer.type) {
          // Player wins
@@ -328,8 +328,7 @@
                return players.Dealer;
             }
             else {
-               // find max singleton
-               return "Whoever has the highest singleton";
+               return compareSingles(hands);
             }
 
          case handTypes.FullHouse:
@@ -359,8 +358,7 @@
                return players.Dealer;
             }
             else {
-               // find max singleton
-               return "Whoever has the highest singleton";
+               return compareSingles(hands);
             }
 
          case handTypes.TwoPair:
@@ -378,8 +376,7 @@
                   return players.Dealer;
                }
                else {
-                  // find max singleton
-                  return "Whoever has the highest singleton";
+                  return compareSingles(hands);
                }
             }
 
@@ -391,14 +388,33 @@
                return players.Dealer;
             }
             else {
-               return "Whoever has the highest singleton";
+               return compareSingles(hands);
             }
 
-         default: return "Whoever has the highest singleton";
-         }
+         default: 
+            return compareSingles(hands);
 
-         
+         }
       }
+   }
+
+   function compareSingles(hands) {
+      const playerSingles = hands.player.singles;
+      const dealerSingles = hands.dealer.singles;
+
+      // Player and dealer have same number of singles
+      const numSingles = playerSingles.length;
+
+      for (let i = 0; i < numSingles; i++) {
+         if (playerSingles[i] > dealerSingles[i]) {
+            return players.Player;
+         }
+         else if (playerSingles[i] < dealerSingles[i]) {
+            return players.Dealer;
+         }
+      }
+
+      return "Tie";
    }
 
 })();
