@@ -14,6 +14,7 @@
    const doneButton = document.querySelector('#popup section button');
    const playerHand = document.getElementById('player');
    const dealerHand = document.getElementById('dealer');
+   const gameStatus = document.getElementById('gameStatus');
 
    // Audio
    const beginSound = new Audio('media/begin.mp3');
@@ -180,7 +181,7 @@
          // TODO: dealer drawing
          showHands();
          const winner = pickWinner();
-         console.log(winner);
+         displayWinner(winner);
          // TODO: Payouts
       });
 
@@ -256,21 +257,6 @@
       }
    }
 
-   // FOR TESTING ONLY: Replace all cards with specified values
-   function replaceAllCards() {
-      // Set new card values
-      gameData.cards.dealer = [1, 2, 3, 4, 5];
-      gameData.cards.player = [1, 2, 3, 4, 6];
-
-      // Redo player's cards
-      const playerCards = playerHand.children;
-      for (let i = 0; i < playerCards.length; i++) {
-         const card = playerCards[i];
-         const newVal = gameData.cards.player[i];
-         card.innerHTML = `${newVal}<img src="images/${cardIcons[newVal]}">`;
-      }
-   }
-
    function showHands() {
       for (let i = 0; i < 5; i++) {
          const dealerCard = dealerHand.children[i];
@@ -279,6 +265,15 @@
          dealerCard.innerHTML = `${dealerCardVal}<img src="images/${cardIcons[dealerCardVal]}">`
       }
    }
+
+   function displayWinner(winnerString) {
+      console.log(winnerString);
+      gameStatus.innerHTML = `<h2>${winnerString}</h2>`;
+      gameStatus.removeAttribute('hidden');
+   }
+
+
+   // === WINNER CALCULATION FUNCTIONS ===
 
    function pickWinner() {
       const hands = {
@@ -410,6 +405,22 @@
       }
 
       return "Tie";
+   }
+
+
+   // FOR TESTING ONLY: Replace all cards with specified values
+   function replaceAllCards() {
+      // Set new card values
+      gameData.cards.dealer = [1, 2, 3, 4, 5];
+      gameData.cards.player = [1, 2, 3, 4, 6];
+
+      // Redo player's cards
+      const playerCards = playerHand.children;
+      for (let i = 0; i < playerCards.length; i++) {
+         const card = playerCards[i];
+         const newVal = gameData.cards.player[i];
+         card.innerHTML = `${newVal}<img src="images/${cardIcons[newVal]}">`;
+      }
    }
 
 })();

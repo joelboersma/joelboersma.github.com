@@ -114,8 +114,8 @@ h2 {
    font-size: 20px;
 }
 
-#gameStatus h3 {
-   font-size: 36px;
+#gameStatus h2 {
+   /* font-size: 36px; */
    font-weight: normal;
 }
 
