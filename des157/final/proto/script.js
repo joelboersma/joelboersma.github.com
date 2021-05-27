@@ -145,7 +145,7 @@
    startButton.addEventListener('click', startGame);
 
    function startGame() {
-      startButton.removeEventListener(startGame);
+      startButton.removeEventListener('click', startGame);
 
       quitButton.removeAttribute('hidden');
       helpButton.removeAttribute('hidden');
