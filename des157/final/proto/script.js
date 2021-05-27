@@ -210,6 +210,7 @@
       playerHand.innerHTML = '';
       dealerHand.innerHTML = '';
       gameStatus.innerHTML = '';
+      drawButton.innerHTML = 'Hold';
 
       setUpRound();
    }
