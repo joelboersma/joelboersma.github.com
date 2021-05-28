@@ -82,9 +82,13 @@ button:hover {
 }
 
 #startGame {
-   font-size: 36px;
    margin-top: 20px;
    width: 340px;
+   z-index: 2;
+}
+
+#reset {
+   width: 250px;
    z-index: 2;
 }
 
