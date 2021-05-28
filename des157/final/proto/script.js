@@ -205,6 +205,7 @@
       console.log(hands);
       
       showHands(hands);
+      showHandDescriptions(hands);
       const winner = pickWinner(hands);
       displayWinner(winner);
       // TODO: Payouts
@@ -296,6 +297,32 @@
          const dealerCardVal = hands.dealer.cards[i];
          dealerCard.classList.remove('faceDown');
          dealerCard.innerHTML = `${dealerCardVal}<img src="images/${cardIcons[dealerCardVal]}">`
+      }
+   }
+
+   function showHandDescriptions(hands) {
+      const playerTypeString = getTypeString(hands.player);
+      const dealerTypeString = getTypeString(hands.dealer);
+      console.log('Player:', playerTypeString);
+      console.log('Dealer:', dealerTypeString);
+   }
+
+   function getTypeString(hand) {
+      switch(hand.type) {
+      case handTypes.FiveOfAKind:
+         return `Five of a Kind (${hand.five})`;
+      case handTypes.FourOfAKind:
+         return `Four of a Kind (${hand.four})`;
+      case handTypes.FullHouse:
+         return `Full House (${hand.three}, ${hand.pairs[0]})`;
+      case handTypes.ThreeOfAKind:
+         return `Three of a Kind (${hand.three})`;
+      case handTypes.TwoPair:
+         return `Two Pairs (${Math.max(...hand.pairs)}, ${Math.min(...hand.pairs)})`;
+      case handTypes.OnePair:
+         return `Pair (${hand.pairs[0]})`;
+      default:
+         return `Junk`;
       }
    }
 
