@@ -102,6 +102,7 @@ h2 {
 
 #gameStatus h2 {
    font-weight: normal;
+   margin: 0 0 20px 0;
 }
 
 #player, #dealer {
@@ -119,6 +120,19 @@ h2 {
 
 #player {
    bottom: 30px;
+}
+
+#player p, #dealer p {
+   position: absolute;
+   font-size: 24px;
+}
+
+#dealer p {
+   bottom: -65px;
+}
+
+#player p {
+   top: -60px;
 }
 
 .card {

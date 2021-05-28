@@ -303,8 +303,8 @@
    function showHandDescriptions(hands) {
       const playerTypeString = getTypeString(hands.player);
       const dealerTypeString = getTypeString(hands.dealer);
-      console.log('Player:', playerTypeString);
-      console.log('Dealer:', dealerTypeString);
+      playerHand.innerHTML += `<p>${playerTypeString}</p>`;
+      dealerHand.innerHTML += `<p>${dealerTypeString}</p>`;
    }
 
    function getTypeString(hand) {
