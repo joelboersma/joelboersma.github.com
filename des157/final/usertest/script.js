@@ -360,8 +360,14 @@
       document.getElementById('reset').addEventListener('click', reset);
 
       switch(winnerString) {
-      case outcomes.Player: tadaSound.play(); break;
-      case outcomes.Dealer: tromboneSound.play(); break;
+      case outcomes.Player: 
+         tadaSound.play(); 
+         document.querySelector('#gameStatus h2').className = 'win';
+         break;
+      case outcomes.Dealer: 
+         tromboneSound.play(); 
+         document.querySelector('#gameStatus h2').className = 'lose';
+         break;
       default: // TODO: Find sound for tie
       }
    }

@@ -111,6 +111,13 @@ h2 {
    margin: 0 0 20px 0;
 }
 
+#gameStatus h2.win {
+   color: #2FA5DF;
+}
+#gameStatus h2.lose {
+   color: #9462FF;
+}
+
 #player, #dealer {
    display: flex;
    width: 850px;
