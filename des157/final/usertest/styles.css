@@ -26,8 +26,6 @@ p, footer {
 }
 
 header {
-   width: 100%;
-   background-color: rgba(0, 0, 0, .3);
    text-align: center;
 }
 
@@ -179,6 +177,19 @@ h2 {
 
 .card.faceDown {
    background-color: #2FA5DF;
+}
+
+.card.small {
+   padding: 0;
+   width: 26px;
+   height: 36px;
+   border-radius: 5px;
+   position: static;
+}
+
+.card.small img {
+   max-width: 20px;
+   max-height: 20px;
 }
 
 #player .card {
@@ -334,4 +345,46 @@ nav li a:hover {
 #popup section button {
    margin-top: 20px;
    width: 125px;
+}
+
+#hands {
+   width: min-content;
+   padding: 10px;
+   position: absolute;
+   top: 10px;
+   left: 10px;
+}
+
+#hands h3, #bank h3 {
+   font-weight: normal;
+   font-size: 36px;
+   text-decoration: underline;
+   margin: 10px;
+}
+
+#hands section {
+   display: flex;
+   font-size: 36px;
+}
+
+#cardCombos div {
+   display: flex;
+}
+
+#cardCombos div div.card.small {
+   margin: 3px;
+}
+
+#multipliers {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   text-align: end;
+   margin-left: 5px;
+}
+
+#multipliers div {
+   height: 34px;
+   margin: 3px;
+   padding-top: 2px;
 }

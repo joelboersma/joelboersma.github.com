@@ -17,6 +17,7 @@
    const playerHand = document.getElementById('player');
    const dealerHand = document.getElementById('dealer');
    const gameStatus = document.getElementById('gameStatus');
+   const handsPanel = document.getElementById('hands');
 
    // Audio
    const beginSound = new Audio('media/begin.mp3');
@@ -149,6 +150,7 @@
 
       quitButton.removeAttribute('hidden');
       helpButton.removeAttribute('hidden');
+      handsPanel.removeAttribute('hidden');
       rules.toggleAttribute('hidden');
       startButton.toggleAttribute('hidden');
       footer.toggleAttribute('hidden');
