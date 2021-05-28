@@ -347,24 +347,27 @@ nav li a:hover {
    width: 125px;
 }
 
-#hands {
+#hands, #bank {
    width: min-content;
    padding: 10px;
    position: absolute;
    top: 10px;
-   left: 10px;
+   font-size: 36px;
 }
 
 #hands h3, #bank h3 {
    font-weight: normal;
-   font-size: 36px;
    text-decoration: underline;
    margin: 10px;
+   text-align: center;
+}
+
+#hands {
+   left: 10px;
 }
 
 #hands section {
    display: flex;
-   font-size: 36px;
 }
 
 #cardCombos div {
@@ -387,4 +390,20 @@ nav li a:hover {
    height: 34px;
    margin: 3px;
    padding-top: 2px;
+}
+
+#bank {
+   right: 10px;
+}
+
+#bank section {
+   width: 170px;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   padding: 10px;
+}
+
+#bank img {
+   max-height: 48px;
 }

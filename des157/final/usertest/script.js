@@ -18,6 +18,7 @@
    const dealerHand = document.getElementById('dealer');
    const gameStatus = document.getElementById('gameStatus');
    const handsPanel = document.getElementById('hands');
+   const bankPanel = document.getElementById('bank');
 
    // Audio
    const beginSound = new Audio('media/begin.mp3');
@@ -151,6 +152,7 @@
       quitButton.removeAttribute('hidden');
       helpButton.removeAttribute('hidden');
       handsPanel.removeAttribute('hidden');
+      bankPanel.removeAttribute('hidden');
       rules.toggleAttribute('hidden');
       startButton.toggleAttribute('hidden');
       footer.toggleAttribute('hidden');
