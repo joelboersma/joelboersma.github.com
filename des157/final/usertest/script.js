@@ -198,8 +198,8 @@
       actionArea.toggleAttribute('hidden');
 
       replacePlayerCards();
+      dealerDrawCards();
       // replaceAllCards(); // FOR TESTING ONLY
-      // TODO: dealer drawing
 
       // Generate Hand objects
       const hands = {
@@ -240,6 +240,10 @@
          const dealerCard = document.createElement('div');
          dealerCard.className = `card c${i} faceDown`;
          dealerCard.innerHTML = `<img src="images/${cardIcons[0]}">`;
+
+         // for testing dealer AI
+         // dealerCard.innerHTML = `${dealerCardVal}<img src="images/${cardIcons[dealerCardVal]}">`;
+
          dealerHand.appendChild(dealerCard);
 
          // Make player card
@@ -295,11 +299,31 @@
       }
    }
 
+   function dealerDrawCards() {
+      // count cards
+      let counts = Array(6).fill(0);
+      for (const card of gameData.cards.dealer) {
+         counts[card - 1]++;
+      }
+
+      gameData.cards.dealer.forEach(function(cardVal, i) {
+         if (counts[cardVal - 1] == 1) {
+            const newVal = Math.floor(Math.random() * 6) + 1;
+            gameData.cards.dealer[i] = newVal;
+            
+            // face-up testing only
+            // dealerHand.children[i].innerHTML = `${newVal}<img src="images/${cardIcons[newVal]}">`;
+         }
+      });
+   }
+
    function showHands(hands) {
       for (let i = 0; i < 5; i++) {
          const dealerCard = dealerHand.children[i];
          const dealerCardVal = hands.dealer.cards[i];
          dealerCard.classList.remove('faceDown');
+         
+         // For testing
          dealerCard.innerHTML = `${dealerCardVal}<img src="images/${cardIcons[dealerCardVal]}">`
       }
    }
