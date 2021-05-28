@@ -400,10 +400,14 @@ nav li a:hover {
    width: 170px;
    display: flex;
    align-items: center;
-   justify-content: space-around;
+   justify-content: space-between;
    padding: 10px;
 }
 
 #bank img {
-   max-height: 48px;
+   max-height: 65px;
+}
+
+#bank div {
+   padding-top: 4px;
 }
