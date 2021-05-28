@@ -21,6 +21,10 @@ body {
    background: rgba(0, 0, 0, 0.3);
 }
 
+p, footer {
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 header {
    width: 100%;
    background-color: rgba(0, 0, 0, .3);
@@ -125,10 +129,11 @@ h2 {
 #player p, #dealer p {
    position: absolute;
    font-size: 24px;
+   /* font-weight: bold; */
 }
 
 #dealer p {
-   bottom: -65px;
+   bottom: -60px;
 }
 
 #player p {
