@@ -196,8 +196,17 @@
       replacePlayerCards();
       // replaceAllCards(); // FOR TESTING ONLY
       // TODO: dealer drawing
-      showHands();
-      const winner = pickWinner();
+
+      // Generate Hand objects
+      const hands = {
+         player: new Hand(gameData.cards.player),
+         dealer: new Hand(gameData.cards.dealer)
+      }
+      console.log(hands);
+      
+      showHands(hands);
+      showHandDescriptions(hands);
+      const winner = pickWinner(hands);
       displayWinner(winner);
       // TODO: Payouts
    }
@@ -282,12 +291,38 @@
       }
    }
 
-   function showHands() {
+   function showHands(hands) {
       for (let i = 0; i < 5; i++) {
          const dealerCard = dealerHand.children[i];
-         const dealerCardVal = gameData.cards.dealer[i];
+         const dealerCardVal = hands.dealer.cards[i];
          dealerCard.classList.remove('faceDown');
          dealerCard.innerHTML = `${dealerCardVal}<img src="images/${cardIcons[dealerCardVal]}">`
+      }
+   }
+
+   function showHandDescriptions(hands) {
+      const playerTypeString = getTypeString(hands.player);
+      const dealerTypeString = getTypeString(hands.dealer);
+      console.log('Player:', playerTypeString);
+      console.log('Dealer:', dealerTypeString);
+   }
+
+   function getTypeString(hand) {
+      switch(hand.type) {
+      case handTypes.FiveOfAKind:
+         return `Five of a Kind (${hand.five})`;
+      case handTypes.FourOfAKind:
+         return `Four of a Kind (${hand.four})`;
+      case handTypes.FullHouse:
+         return `Full House (${hand.three}, ${hand.pairs[0]})`;
+      case handTypes.ThreeOfAKind:
+         return `Three of a Kind (${hand.three})`;
+      case handTypes.TwoPair:
+         return `Two Pairs (${Math.max(...hand.pairs)}, ${Math.min(...hand.pairs)})`;
+      case handTypes.OnePair:
+         return `Pair (${hand.pairs[0]})`;
+      default:
+         return `Junk`;
       }
    }
 
@@ -306,13 +341,7 @@
 
    // === WINNER CALCULATION FUNCTIONS ===
 
-   function pickWinner() {
-      const hands = {
-         player: new Hand(gameData.cards.player),
-         dealer: new Hand(gameData.cards.dealer)
-      }
-      console.log(hands);
-
+   function pickWinner(hands) {
       if (hands.player.type > hands.dealer.type) {
          // Player wins
          return outcomes.Player;
@@ -338,7 +367,7 @@
                return outcomes.Dealer;
             }
             else {
-               return "Tie";
+               return outcomes.Tie;
             }
 
          case handTypes.FourOfAKind:
@@ -367,7 +396,7 @@
                   return outcomes.Dealer;
                }
                else {
-                  return "Tie";
+                  return outcomes.Tie;
                }
             }
 
@@ -435,7 +464,7 @@
          }
       }
 
-      return "Tie";
+      return outcomes.Tie;
    }
 
    
