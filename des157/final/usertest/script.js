@@ -183,6 +183,7 @@
 
       // Set up player actions
       actionArea.removeAttribute('hidden');
+      actionArea.style.display = 'flex';
       // TODO: Betting Buttons
       // TODO: Betting Button Event Listeners
    }
@@ -196,6 +197,7 @@
          card.removeEventListener('click', toggleCardSelect);
       }
       actionArea.toggleAttribute('hidden');
+      actionArea.style.display = 'none';
 
       replacePlayerCards();
       dealerDrawCards();
