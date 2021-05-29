@@ -233,10 +233,12 @@
       gameData.cards.player.splice(0);
       gameData.cards.dealer.splice(0);
       gameData.numCardsSelected = 0;
+      gameData.betAmount = 5;
       playerHand.innerHTML = '';
       dealerHand.innerHTML = '';
       gameStatus.innerHTML = '';
       drawButton.innerHTML = 'Hold';
+      betAmountDisplay.innerHTML = ' x 5';
 
       setUpRound();
    }
