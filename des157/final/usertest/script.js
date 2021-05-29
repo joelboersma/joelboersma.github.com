@@ -19,6 +19,9 @@
    const gameStatus = document.getElementById('gameStatus');
    const handsPanel = document.getElementById('hands');
    const bankPanel = document.getElementById('bank');
+   const betUp = document.getElementById('betUp');
+   const betDown = document.getElementById('betDown');
+   const betAmountDisplay = document.querySelector('#betAmount div');
 
    // Audio
    const beginSound = new Audio('media/begin.mp3');
@@ -184,8 +187,6 @@
       // Set up player actions
       actionArea.removeAttribute('hidden');
       actionArea.style.display = 'flex';
-      // TODO: Betting Buttons
-      // TODO: Betting Button Event Listeners
    }
 
    // When player pushes draw button
@@ -216,6 +217,16 @@
       displayWinner(winner);
       // TODO: Payouts
    }
+
+   // Betting Button Event Listeners
+   betUp.addEventListener('click', function() {
+      gameData.betAmount++;
+      betAmountDisplay.innerHTML = ` x ${gameData.betAmount}`;
+   });
+   betDown.addEventListener('click', function() {
+      gameData.betAmount--;
+      betAmountDisplay.innerHTML = ` x ${gameData.betAmount}`;
+   });
 
    // When player pushes "Play Again" button
    function reset() {
