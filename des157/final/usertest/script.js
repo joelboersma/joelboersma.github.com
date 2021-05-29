@@ -45,6 +45,17 @@
       'Spade.svg'
    ];
 
+   // Payout Multipliers on Win
+   const payoutMultipliers = [
+      1,   // Junk
+      2,   // 1 Pair
+      3,   // 2 Pair
+      4,   // 3oaK
+      6,   // Full House
+      8,   // 4oaK
+      16,  // 5oaK
+   ];
+
 
    /// === ENUMS ===
 
@@ -55,13 +66,13 @@
    }
 
    const handTypes = {
-      FiveOfAKind: 6,
-      FourOfAKind: 5,
-      FullHouse: 4,
-      ThreeOfAKind: 3,
-      TwoPair: 2,
+      None: 0,
       OnePair: 1,
-      None: 0
+      TwoPair: 2,
+      ThreeOfAKind: 3,
+      FullHouse: 4,
+      FourOfAKind: 5,
+      FiveOfAKind: 6
    }
 
 
@@ -223,7 +234,10 @@
       showHandDescriptions(hands);
       const winner = pickWinner(hands);
       displayWinner(winner);
-      // TODO: Payouts
+
+      if (winner === outcomes.Player) {
+         payout(hands.player.type);
+      }
    }
 
    // Betting Button Event Listeners
@@ -403,6 +417,12 @@
          break;
       default: // TODO: Find sound for tie
       }
+   }
+
+   function payout(playerHandType) {
+      gameData.bankAmount += gameData.betAmount * payoutMultipliers[playerHandType];
+      console.log(`${getTypeString(playerHandType)}: ${gameData.betAmount} * ${payoutMultipliers[playerHandType]} = ${gameData.betAmount * payoutMultipliers[playerHandType]}`);
+      bankAmountDisplay.innerHTML = ` x ${gameData.bankAmount}`;
    }
 
 
