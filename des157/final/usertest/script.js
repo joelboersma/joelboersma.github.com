@@ -228,14 +228,18 @@
 
    // Betting Button Event Listeners
    betUp.addEventListener('click', function() {
-      gameData.betAmount++;
-      gameData.bankAmount--;
-      updateGemDisplays();
+      if(gameData.betAmount < 5) {
+         gameData.betAmount++;
+         gameData.bankAmount--;
+         updateGemDisplays();
+      }
    });
    betDown.addEventListener('click', function() {
-      gameData.betAmount--;
-      gameData.bankAmount++;
-      updateGemDisplays();
+      if (gameData.betAmount > 1) {
+         gameData.betAmount--;
+         gameData.bankAmount++;
+         updateGemDisplays();
+      }
    });
    function updateGemDisplays() {
       betAmountDisplay.innerHTML = ` x ${gameData.betAmount}`;
