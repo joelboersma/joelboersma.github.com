@@ -22,6 +22,7 @@
    const betUp = document.getElementById('betUp');
    const betDown = document.getElementById('betDown');
    const betAmountDisplay = document.querySelector('#betAmount div');
+   const bankAmountDisplay = document.querySelector('#bank section div');
 
    // Audio
    const beginSound = new Audio('media/begin.mp3');
@@ -133,6 +134,9 @@
       }
    }
 
+
+   // === GAME DATA ===
+
    let gameData = {
       // 0 for face-down, 1-6 for face-up
       cards: {
@@ -140,7 +144,7 @@
          dealer: []
       },
       numCardsSelected: 0,
-      bank: 100,
+      bankAmount: 105,
       betAmount: 5
    };
 
@@ -187,6 +191,10 @@
       // Set up player actions
       actionArea.removeAttribute('hidden');
       actionArea.style.display = 'flex';
+
+      // Remove default bet amount from bank
+      gameData.bankAmount -= gameData.betAmount;
+      bankAmountDisplay.innerHTML = ` x ${gameData.bankAmount}`;
    }
 
    // When player pushes draw button
@@ -221,12 +229,18 @@
    // Betting Button Event Listeners
    betUp.addEventListener('click', function() {
       gameData.betAmount++;
-      betAmountDisplay.innerHTML = ` x ${gameData.betAmount}`;
+      gameData.bankAmount--;
+      updateGemDisplays();
    });
    betDown.addEventListener('click', function() {
       gameData.betAmount--;
-      betAmountDisplay.innerHTML = ` x ${gameData.betAmount}`;
+      gameData.bankAmount++;
+      updateGemDisplays();
    });
+   function updateGemDisplays() {
+      betAmountDisplay.innerHTML = ` x ${gameData.betAmount}`;
+      bankAmountDisplay.innerHTML = ` x ${gameData.bankAmount}`;
+   }
 
    // When player pushes "Play Again" button
    function reset() {
