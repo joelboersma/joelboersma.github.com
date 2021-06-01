@@ -16,20 +16,44 @@
    <main>
       <article>
 
-         <section>
-            <h2>Observation 1: </h2>
-         </section>
+         <section id="observations">
+            <h2>Observations</h2>
 
-         <section>
-            <h2>Observation 2: </h2>
-         </section>
+            <h3>1. Understanding correlates with poker experience.</h3>
+            <p>
+               Two of my testers explained near the beginning of their test sessions that they had never played poker before. Because of this, it was harder for them to understand the game, and they struggled with some of the most basic poker-based mechanics. I had to explain certain parts of poker that are relevant for this project, such as what makes a good poker hand. My goal for this project is not to teach people poker, and I believe that experience is the best teacher when it comes to games like this. However, I do feel that I could do more to help these users that are unfamiliar with poker understand the fundamentals.
+            </p>
 
-         <section>
-            <h2>Observation 3: </h2>
+            <h3>2. Profit amounts were not intuitive.</h3>
+            <p>
+               None of my testers understood how profit from the betting system was calculated. I had to explain to each person how the calculations worked. One of my testers thought the numbers next to each hand in the "Hands" panel were point values instead of multipliers. I should make the profit calculation more apparent somehow, either through the instructions or through a visual indicator on the main game screen. Animation could help here, possibly showing the gems travelling from the center of the screen to the bank. One of my testers suggested showing the amount gained from winning beneath the bank area. I may take this a step further and show the entire calculation in this way.
+            </p>
+
+            <h3>3. More precise instructions may be necessary.</h3>
+            <p>
+               One of my testers read the instructions on the landing page and started playing, but did not fully understand the game until viewing the instructions a second time. Another tester was still confused about what do do after reading the directions multiple times. I need to use more precise directions to tell the user exactly what to do during a turn. Some sequential directions for the user's actions during a turn would most likely be part of this. Better explanations for poker hands, betting, and some other game mechanics may also be beneficial. However, with this many instructions, a new user interface may be needed for them.
+            </p>
          </section>
 
          <section>
             <h2>Final Project Update Plan</h2>
+            <p>
+               I plan to include more precise instructions for the general gameplay and the various mechanics involved in the game. I will likely not have time to produce a comprehensive manual for how to play, particularly for explaining to people who have never played poker before. So I will most likely improve my existing instruction set. But if I do end up making the manual, it will need to be an entirely new interface.
+            </p>
+            <p>
+               I also plan to make the mechanics for betting more obvious on the game screen. This will be done in a few steps.
+            </p>
+            <ol>
+               <li>
+                  I will visually modify the betting multipliers on the "Hands" panel. I will make them a different color to make them stand out more, and will consider putting an "x" after each of them to make it clear they are multipliers instead of point values.
+               </li>
+               <li>
+                  I will make the amount a user bets a different color. The reason for this is explained in the next step.
+               </li>
+               <li>
+                  When the user wins a round, I will display the calculation for their profits beneath the "Bank" panel. I will use the new colors for the bet and the multiplier in this profit display. It will show "[Bet Amount] x [Multiplier] = [Profit]"or something along these lines.
+               </li>
+            </ol>
          </section>
 
       </article>

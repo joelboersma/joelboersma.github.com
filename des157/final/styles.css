@@ -33,8 +33,20 @@ h2 {
    font-size: 26px;
 }
 
+h3 {
+   font-size: 22px;
+   font-weight: normal;
+   font-style: italic;
+   color: #008;
+   margin-bottom: 8px;
+}
+
 p {
    font-size: 20px;
+}
+
+#observations p {
+   margin-top: 0;
 }
 
 figure {
