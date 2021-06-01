@@ -1,7 +1,19 @@
 (function(){
    'use strict';
 
-   /// === INIT ===
+   // === USER TEST ===
+
+   alert("Hello, welcome to Picture Poker! Thank you for helping test my game. I value your feedback.")
+   alert(
+      "Please complete the following tasks for today's testing session:\n" + 
+      "1. Carefully read the description of the game.\n" +
+      "2. Press the \"Start the Game\" button to begin playing. (If you ever need to read the description again, press the \"?\" button in the lower right hand corner.)\n" +
+      "3. Complete five rounds. Do not change your bet for now.\n" +
+      "4. Try adjusting your bet for the next three rounds.\n" +
+      "5. Continue playing until you win three more rounds."
+   );
+
+   // === INIT ===
 
    // Elements
    const header = document.querySelector('header');
